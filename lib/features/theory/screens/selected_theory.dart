@@ -16,31 +16,32 @@ class _SelectedTheoryState extends State<SelectedTheory> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          InkWell(
-            onTap: () {
-              Get.to(() => TheoryScreen());
-            },
-            child: Container(
-              margin: const EdgeInsets.only(left: 15, top: 50),
-              child: Row(
-                children: [
-                  Icon(Icons.arrow_back),
-                ],
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, top: 50),
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Get.to(() => TheoryScreen());
+                  },
+                  child: Icon(Icons.arrow_back),
+                ),
+              ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ...List.generate(
-                theoryTopic.length,
+                theoryTopicList.length,
                 (index) => Indicator(
                   isActive: _selectedIndex == index ? true : false,
                 ),
@@ -48,9 +49,9 @@ class _SelectedTheoryState extends State<SelectedTheory> {
             ],
           ),
           Expanded(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+            child: SizedBox(
+              height: screenSize.height,
+              width: screenSize.width,
               child: PageView.builder(
                 onPageChanged: (index) {
                   setState(() {
@@ -58,41 +59,37 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                   });
                 },
                 controller: PageController(viewportFraction: 1),
-                itemCount: theoryTopic.length,
+                itemCount: theoryTopicList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
+                  return DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: Stack(
-                      children: [
-                        Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                theoryTopic[index].topic.toUpperCase(),
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                theoryTopic[index].theory,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              )
-                            ],
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 150, top: 50, left: 15, right: 15),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            theoryTopicList[index].topic.toUpperCase(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                            ),
                           ),
-                          margin: EdgeInsets.symmetric(horizontal: 15),
-                          padding: EdgeInsets.only(bottom: 150, top: 50),
-                        ),
-                      ],
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            theoryTopicList[index].theory,
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 20,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
