@@ -1,47 +1,47 @@
-class theoryTopic {
+class TheoryTopic {
   final int count;
   final String topic;
   final String theory;
 
-  theoryTopic({
+  TheoryTopic({
     required this.count,
     required this.topic,
     required this.theory,
   });
 }
 
-List<theoryTopic> theoryTopicList = [
-  theoryTopic(
+List<TheoryTopic> theoryTopicList = [
+  TheoryTopic(
       count: 1,
       topic: "Введение",
       theory:
           "Flutter - это открытый исходный код фреймворк для создания мобильных, веб- и настольных приложений из одного кода. Он использует язык программирования Dart и предоставляет множество готовых виджетов для построения пользовательского интерфейса."),
-  theoryTopic(
+  TheoryTopic(
       count: 1,
       topic: "Padding",
       theory:
           "В Flutter виджет Padding используется для добавления отступов вокруг дочерних виджетов. Это помогает управлять пространством между элементами в пользовательском интерфейсе."),
-  theoryTopic(
+  TheoryTopic(
       count: 1,
       topic: "Align и Center",
       theory:
           "Align используется для выравнивания дочерних виджетов в родительском контейнере. Center является специализированным виджетом, выравнивающим своего единственного ребенка по центру родительского контейнера."),
-  theoryTopic(
+  TheoryTopic(
       count: 1,
       topic: "Container",
       theory:
           "Container - это базовый виджет, который объединяет в себе множество стилевых и композиционных свойств. Он может содержать другие виджеты и предоставляет управление размерами, позицией и декорацией."),
-  theoryTopic(
+  TheoryTopic(
       count: 1,
       topic: "Row и Column",
       theory:
           "Row и Column - это виджеты, предназначенные для организации дочерних элементов в строку (горизонтально) или столбец (вертикально) соответственно."),
-  theoryTopic(
+  TheoryTopic(
       count: 1,
       topic: "Expanded",
       theory:
           "Expanded используется внутри Row или Column и занимает все доступное пространство в направлении родительского виджета (горизонтально в Row и вертикально в Column)."),
-  theoryTopic(
+  TheoryTopic(
       count: 1,
       topic: "Stack",
       theory:

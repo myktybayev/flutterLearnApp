@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_app/features/theory/screens/selected_theory.dart';
-import 'package:get/get.dart';
 
-import '../models/theories_model.dart';
+import '../models/theories_topic_model.dart';
 
 class TheoryScreen extends StatefulWidget {
   const TheoryScreen({super.key});
@@ -12,7 +11,7 @@ class TheoryScreen extends StatefulWidget {
 }
 
 class _TheoryScreenState extends State<TheoryScreen> {
-  List<theoryList> _theory = [];
+  List<TheoryList> _theory = [];
 
   @override
   void initState() {
@@ -22,12 +21,12 @@ class _TheoryScreenState extends State<TheoryScreen> {
   }
 
   void _runFilter(String enteredKeyword) {
-    List<theoryList> results = [];
+    List<TheoryList> results = [];
     if (enteredKeyword.isEmpty) {
       results = theoriesList;
     } else {
       results = theoriesList
-          .where((topic) => topic.theory_topic
+          .where((topic) => topic.theoryTopic
               .toLowerCase()
               .contains(enteredKeyword.toLowerCase()))
           .toList();
@@ -41,13 +40,27 @@ class _TheoryScreenState extends State<TheoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: Text(
+          "Theories",
+          style: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
+        ),
+        leading: const BackButton(
+          color: Colors.white,
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+      ),
       body: Padding(
-        padding: EdgeInsets.only(top: 50, left: 15, right: 15),
+        padding: EdgeInsets.only(top: 15, left: 15, right: 15),
         child: Column(
           children: [
-            const SizedBox(
-              height: 30,
-            ),
             TextField(
               onChanged: (value) => _runFilter(value),
               textAlignVertical: TextAlignVertical.center,
@@ -76,22 +89,26 @@ class _TheoryScreenState extends State<TheoryScreen> {
                   return Column(
                     children: [
                       InkWell(
-                        onTap: () {
-                          Get.to(() => SelectedTheory());
-                        },
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: ListTile(
-                            title: Text(_theory[index].theory_topic),
+                            title: Text(_theory[index].theoryTopic),
                             trailing: const Icon(
                               Icons.favorite,
                               color: Colors.deepPurple,
                             ),
                           ),
                         ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      SelectedTheory(theory: _theory[index])));
+                        },
                       ),
                       const SizedBox(
                         height: 10,
