@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/welcome/welcome.dart';
+import 'package:flutter_learn_app/features/authentication/password_page.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AuthenticationPage extends StatefulWidget {
   @override
@@ -31,22 +33,6 @@ class _AuthenticationPageState extends State<AuthenticationPage>
           backgroundColor: Colors.transparent,
           elevation: 0,
           actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () {
-                  // пропускает регистрацию или вход и заходит как гость
-
-                },
-                child: Text(
-                  'Пропустить',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16.0,
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
         body: Padding(
@@ -74,7 +60,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey,
               ),
-              SizedBox(height: 12.0), 
+              const SizedBox(height: 12.0),
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
@@ -110,7 +96,10 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                           alignment: Alignment.centerRight,
                           child: GestureDetector(
                             onTap: () {
-                              // пароль востановить ету
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => PasswordRecoveryPage()),
+                                );
                             },
                             child: Text(
                               'Забыли пароль?',
@@ -155,7 +144,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                         ),
                         GestureDetector(
                           onTap: () {
-                            // инфо про конфиденциальность
+                            _launchPDF('https://ayala.kz/PK.pdf');
                           },
                           child: Center(
                             child: Text(
@@ -211,7 +200,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                           alignment: Alignment.centerRight,
                           child: GestureDetector(
                             onTap: () {
-                              _tabController.animateTo(0); 
+                              _tabController.animateTo(0);
                             },
                             child: Text(
                               'Уже есть аккаунт?',
@@ -256,7 +245,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                         ),
                         GestureDetector(
                           onTap: () {
-                            //басканда про политику конфиденциальности шыкса инфо
+                            _launchPDF('https://ayala.kz/PK.pdf');
                           },
                           child: Center(
                             child: Text(
@@ -278,5 +267,12 @@ class _AuthenticationPageState extends State<AuthenticationPage>
         ),
       ),
     );
+  }
+  void _launchPDF(String pdfUrl) async {
+    if (await canLaunch(pdfUrl)) {
+      await launch(pdfUrl);
+    } else {
+        throw 'Не удалось открыть PDF';
+      }
   }
 }
