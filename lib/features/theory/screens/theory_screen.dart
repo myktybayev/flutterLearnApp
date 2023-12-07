@@ -15,7 +15,6 @@ class _TheoryScreenState extends State<TheoryScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _theory = theoriesList;
     super.initState();
   }
@@ -42,7 +41,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text(
+        title: const Text(
           "Theories",
           style: TextStyle(
               fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
@@ -58,7 +57,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+        padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
         child: Column(
           children: [
             TextField(
