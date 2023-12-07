@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/screens/Home_screen.dart';
+import 'package:flutter_learn_app/screens/home_screen.dart';
+
+import 'screens/saved_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,9 +47,9 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Курсы',
-          ),
+          ),   
           BottomNavigationBarItem(
-            icon: Icon(Icons.save_alt),
+            icon: Icon(Icons.favorite),
             label: 'Сохраненные',
           ),
           BottomNavigationBarItem(
@@ -60,31 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-class SavedScreen extends StatelessWidget {
-  static List<Course> savedCourses = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: savedCourses.isEmpty
-            ? Text('No Saved Courses')
-            : ListView.builder(
-                itemCount: savedCourses.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(savedCourses[index].title),
-                    subtitle: Text('${savedCourses[index].progress}% Completed'),
-                  );
-                },
-              ),
-      ),
-    );
-  }
-}
-
-
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -93,6 +70,4 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-List<Course> savedCourses = [];
-
 
