@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Курсы',
-          ),   
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Сохраненные',
@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -70,4 +71,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
