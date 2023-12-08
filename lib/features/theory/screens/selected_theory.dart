@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/theory/models/theories_topic_model.dart';
 
 import '../models/theory_topic_model.dart';
 import 'only_indicator.dart';
 
 class SelectedTheory extends StatefulWidget {
-  final TheoryList theory;
+  final String theory;
+  final List topicList;
 
-  SelectedTheory({super.key, required this.theory});
+  const SelectedTheory(
+      {super.key, required this.theory, required this.topicList});
 
   @override
   State<SelectedTheory> createState() => _SelectedTheoryState();
@@ -22,8 +23,8 @@ class _SelectedTheoryState extends State<SelectedTheory> {
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         title: Text(
-          widget.theory.theoryTopic,
-          style: TextStyle(
+          widget.theory,
+          style: const TextStyle(
               fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         leading: const BackButton(
@@ -31,8 +32,8 @@ class _SelectedTheoryState extends State<SelectedTheory> {
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(15),
+            bottomRight: Radius.circular(15),
           ),
         ),
       ),
@@ -46,7 +47,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ...List.generate(
-                theoryTopicList.length,
+                widget.topicList.length,
                 (index) => Indicator(
                   isActive: _selectedIndex == index ? true : false,
                 ),
@@ -61,7 +62,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                 });
               },
               controller: PageController(viewportFraction: 1),
-              itemCount: theoryTopicList.length,
+              itemCount: widget.topicList.length,
               itemBuilder: (BuildContext context, int index) {
                 return DecoratedBox(
                   decoration: BoxDecoration(
@@ -73,17 +74,17 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                     child: Column(
                       children: [
                         Text(
-                          theoryTopicList[index].topic.toUpperCase(),
+                          widget.topicList[index].toUpperCase(),
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                         ),
                         Text(
-                          theoryTopicList[index].theory,
+                          theoryTopicList[index].topics_pharagraph,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontSize: 20,
