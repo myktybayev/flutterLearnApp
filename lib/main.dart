@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
+import 'package:flutter_learn_app/features/theory/screens/ui_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const TheoryScreen(),
+      home: const UIScreen(),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_app/features/theory/models/theories_topic_model.dart';
-
 import '../models/theory_topic_model.dart';
 import 'only_indicator.dart';
 
@@ -17,7 +16,6 @@ class _SelectedTheoryState extends State<SelectedTheory> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
@@ -79,7 +77,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                             fontSize: 25,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                         ),
                         Text(
