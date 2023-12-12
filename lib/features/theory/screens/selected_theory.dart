@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn_app/features/quiz/screen/quiz_screen.dart';
+import 'package:flutter_learn_app/features/theory/models/theories_topic_model.dart';
 
 import '../models/theory_topic_model.dart';
 import 'only_indicator.dart';
@@ -18,12 +20,11 @@ class _SelectedTheoryState extends State<SelectedTheory> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         title: Text(
-          widget.theory,
+          widget.theory.theoryTopic,
           style: const TextStyle(
               fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
         ),
@@ -64,6 +65,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
               controller: PageController(viewportFraction: 1),
               itemCount: widget.topicList.length,
               itemBuilder: (BuildContext context, int index) {
+                final isLastItem = index == theoryTopicList.length -1;
                 return DecoratedBox(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -89,7 +91,11 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                           style: const TextStyle(
                             fontSize: 20,
                           ),
-                        )
+                        ),
+                        if(isLastItem)
+                          ElevatedButton(onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const QuizScreen()));
+                          }, child: const Text('Проверь себя (тест)'))
                       ],
                     ),
                   ),

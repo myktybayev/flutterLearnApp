@@ -30,7 +30,6 @@ class _TheoryScreenState extends State<TheoryScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _theory = theoriesList;
     super.initState();
     readJson();
