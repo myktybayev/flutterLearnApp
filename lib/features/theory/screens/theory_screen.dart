@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_learn_app/features/theory/screens/selected_theory.dart';
 
 import '../models/theories_topic_model.dart';
@@ -11,12 +14,25 @@ class TheoryScreen extends StatefulWidget {
 }
 
 class _TheoryScreenState extends State<TheoryScreen> {
+  List theoryInfo = [];
+
+  Future<void> readJson() async {
+    final String response =
+        await rootBundle.loadString('json/theories_topic.json');
+    final data = await json.decode(response);
+    setState(() {
+      theoryInfo = data["items"];
+    });
+  }
+  // "json/theories_topic.json"
+
   List<TheoryList> _theory = [];
 
   @override
   void initState() {
     _theory = theoriesList;
     super.initState();
+    readJson();
   }
 
   void _runFilter(String enteredKeyword) {
@@ -51,8 +67,8 @@ class _TheoryScreenState extends State<TheoryScreen> {
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(15),
+            bottomRight: Radius.circular(15),
           ),
         ),
       ),
@@ -83,7 +99,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: _theory.length,
+                itemCount: theoryInfo.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
@@ -94,7 +110,9 @@ class _TheoryScreenState extends State<TheoryScreen> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: ListTile(
-                            title: Text(_theory[index].theoryTopic),
+                            title: Text(
+                              theoryInfo[index]["theory_name"],
+                            ),
                             trailing: const Icon(
                               Icons.favorite,
                               color: Colors.deepPurple,
@@ -105,8 +123,12 @@ class _TheoryScreenState extends State<TheoryScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      SelectedTheory(theory: _theory[index])));
+                                  builder: (context) => SelectedTheory(
+                                        theory: theoryInfo[index]
+                                            ["theory_name"],
+                                        topicList:
+                                            theoryInfo[index]["topics"] as List,
+                                      )));
                         },
                       ),
                       const SizedBox(
