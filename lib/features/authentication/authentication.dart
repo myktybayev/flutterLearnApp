@@ -34,21 +34,21 @@ class _AuthenticationPageState extends State<AuthenticationPage>
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 16.0),
-              Text(
+              const SizedBox(height: 16.0),
+              const Text(
                 'Добро пожаловать!',
                 style: TextStyle(
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               DefaultTabController(
                 length: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     TabBar(
                       controller: _tabController,
                       tabs: const [
@@ -59,7 +59,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                       labelColor: Colors.black,
                       unselectedLabelColor: Colors.grey,
                     ),
-                    SizedBox(height: 12.0),
+                    const SizedBox(height: 12.0),
                     Expanded(
                       child: TabBarView(
                         controller: _tabController,
@@ -67,7 +67,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(height: 8.0),
+                              const SizedBox(height: 8.0),
                               TextFormField(
                                 decoration: InputDecoration(
                                   labelText: 'E-mail',
@@ -78,7 +78,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16.0),
+                              const SizedBox(height: 16.0),
                               TextFormField(
                                 obscureText: true,
                                 decoration: InputDecoration(
@@ -90,7 +90,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 8.0),
+                              const SizedBox(height: 8.0),
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: GestureDetector(
@@ -108,7 +108,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16.0),
+                              const SizedBox(height: 16.0),
                               SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
@@ -121,7 +121,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                       const Color(0xFF4B3FBB),
                                     ),
                                   ),
-                                  child: Padding(
+                                  child: const Padding(
                                     padding: EdgeInsets.symmetric(
                                       vertical: 12.0,
                                     ),
@@ -134,8 +134,8 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 4.0),
-                              Center(
+                              const SizedBox(height: 4.0),
+                              const Center(
                                 child: Text(
                                   'Нажимая кнопку “Войти”, вы принимаете условия',
                                   style: TextStyle(
@@ -148,7 +148,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                 onTap: () {
                                   _launchPDF('https://ayala.kz/PK.pdf');
                                 },
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     'Политики конфиденциальности',
                                     style: TextStyle(
@@ -158,13 +158,13 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16.0),
+                              const SizedBox(height: 16.0),
                             ],
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(height: 8.0),
+                              const SizedBox(height: 8.0),
                               TextFormField(
                                 decoration: InputDecoration(
                                   labelText: 'E-mail',
@@ -175,7 +175,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 8.0),
+                              const SizedBox(height: 8.0),
                               TextFormField(
                                 obscureText: true,
                                 decoration: InputDecoration(
@@ -187,7 +187,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 8.0),
+                              const SizedBox(height: 8.0),
                               TextFormField(
                                 decoration: InputDecoration(
                                   labelText: 'Подтвердите пароль',
@@ -204,13 +204,13 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   onTap: () {
                                     _tabController.animateTo(0);
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Уже есть аккаунт?',
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16.0),
+                              const SizedBox(height: 16.0),
                               SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
@@ -223,7 +223,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                       const Color(0xFF4B3FBB),
                                     ),
                                   ),
-                                  child: Padding(
+                                  child: const Padding(
                                     padding: EdgeInsets.symmetric(
                                       vertical: 12.0,
                                     ),
@@ -236,8 +236,8 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 4.0),
-                              Center(
+                              const SizedBox(height: 4.0),
+                              const Center(
                                 child: Text(
                                   'Нажимая кнопку “Зарегистрироваться”, вы принимаете условия',
                                   style: TextStyle(
@@ -250,7 +250,7 @@ class _AuthenticationPageState extends State<AuthenticationPage>
                                 onTap: () {
                                   _launchPDF('https://ayala.kz/PK.pdf');
                                 },
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     'Политики конфиденциальности',
                                     style: TextStyle(
@@ -276,7 +276,9 @@ class _AuthenticationPageState extends State<AuthenticationPage>
   }
 
   void _launchPDF(String pdfUrl) async {
+    // ignore: deprecated_member_use
     if (await canLaunch(pdfUrl)) {
+      // ignore: deprecated_member_use
       await launch(pdfUrl);
     } else {
       throw 'Не удалось открыть PDF';
