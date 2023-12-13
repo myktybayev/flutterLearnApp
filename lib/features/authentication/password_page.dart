@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
 class PasswordRecoveryPage extends StatefulWidget {
+  const PasswordRecoveryPage({super.key});
+
   @override
   _PasswordRecoveryPageState createState() => _PasswordRecoveryPageState();
 }
 
 class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
-  TextEditingController _newPasswordController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Смена пароля'),
+        title: const Text('Смена пароля'),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -23,14 +25,14 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               'Смена пароля',
               style: TextStyle(
                 fontSize: 28.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextFormField(
               controller: _newPasswordController,
               obscureText: true,
@@ -38,12 +40,12 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
                 labelText: 'Новый пароль',
                 filled: true,
                 fillColor: Colors.grey[200],
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextFormField(
               controller: _confirmPasswordController,
               obscureText: true,
@@ -51,12 +53,12 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
                 labelText: 'Подтвердите пароль',
                 filled: true,
                 fillColor: Colors.grey[200],
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
               ),
             ),
-            SizedBox(height: 32.0),
+            const SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
                 String newPassword = _newPasswordController.text;
@@ -65,11 +67,11 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
-                  Color(0xFF4B3FBB),
+                  const Color(0xFF4B3FBB),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
+              child: const Padding(
+                padding: EdgeInsets.symmetric(
                   vertical: 12.0,
                 ),
                 child: Text(
