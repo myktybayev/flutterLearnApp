@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../models/theory_topic_model.dart';
 import 'only_indicator.dart';
 
 class SelectedTheory extends StatefulWidget {
@@ -72,6 +71,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                     margin: const EdgeInsets.only(
                         bottom: 150, top: 80, left: 15, right: 15),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           widget.topicList[index].toUpperCase(),
@@ -84,7 +84,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                           height: 25,
                         ),
                         Text(
-                          theoryTopicList[index].topics_pharagraph,
+                          widget.topicList[index].toUpperCase(),
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontSize: 20,

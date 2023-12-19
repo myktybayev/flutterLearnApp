@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_learn_app/features/theory/screens/selected_theory.dart';
 
 import '../models/theories_topic_model.dart';
@@ -14,42 +14,56 @@ class TheoryScreen extends StatefulWidget {
 }
 
 class _TheoryScreenState extends State<TheoryScreen> {
-  List theoryInfo = [];
-
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('json/theories_topic.json');
-    final data = await json.decode(response);
-    setState(() {
-      theoryInfo = data["items"];
-    });
-  }
-  // "json/theories_topic.json"
-
-  List<TheoryList> _theory = [];
+  late List<TheoryList> theoryList;
+  late List<TheoryList> filteredTheoryList;
 
   @override
   void initState() {
-    // TODO: implement initState
-    _theory = theoriesList;
     super.initState();
-    readJson();
+    readJson().then((loadedData) {
+      setState(() {
+        theoryList = loadedData;
+        filteredTheoryList = theoryList;
+      });
+    });
+  }
+
+  List theoryInfo = [];
+
+  // Future<List<TheoryList>> readJson() async {
+  //   final String response =
+  //       await rootBundle.loadString('json/theories_topic.json');
+  //   final data = await json.decode(response);
+  //
+  //   setState(() {
+  //     theoryInfo = data["items"];
+  //   });
+  //   List<TheoryList> items =
+  //       data.map((json) => TheoryList.fromJson(json)).toList();
+  //   return items;
+  // }
+
+  Future<List<TheoryList>> readJson() async {
+    final String response =
+        await rootBundle.loadString('json/theories_topic.json');
+    final data = await json.decode(response)["items"];
+    return data.map<TheoryList>((json) => TheoryList.fromJson(json)).toList();
   }
 
   void _runFilter(String enteredKeyword) {
     List<TheoryList> results = [];
     if (enteredKeyword.isEmpty) {
-      results = theoriesList;
+      results = theoryList;
     } else {
-      results = theoriesList
-          .where((topic) => topic.theoryTopic
+      results = theoryList
+          .where((theory) => theory.theory_name!
               .toLowerCase()
               .contains(enteredKeyword.toLowerCase()))
           .toList();
     }
 
     setState(() {
-      _theory = results;
+      filteredTheoryList = results;
     });
   }
 
@@ -58,13 +72,13 @@ class _TheoryScreenState extends State<TheoryScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: const Text(
-          "Theories",
-          style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
-        ),
-        leading: const BackButton(
-          color: Colors.white,
+        title: const Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            "Theories",
+            style: TextStyle(
+                fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
+          ),
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -79,6 +93,15 @@ class _TheoryScreenState extends State<TheoryScreen> {
           children: [
             TextField(
               onChanged: (value) => _runFilter(value),
+              // onChanged: (value) {
+              //   setState(() {
+              //     filteredTheoryList = theoryList
+              //         .where((theory) => theory.theory_name!
+              //             .toLowerCase()
+              //             .contains(value.toLowerCase()))
+              //         .toList();
+              //   });
+              // },
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -100,7 +123,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: theoryInfo.length,
+                itemCount: filteredTheoryList.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
@@ -112,11 +135,11 @@ class _TheoryScreenState extends State<TheoryScreen> {
                           ),
                           child: ListTile(
                             title: Text(
-                              theoryInfo[index]["theory_name"],
+                              filteredTheoryList[index].theory_name ?? '',
                             ),
                             trailing: const Icon(
-                              Icons.favorite,
-                              color: Colors.deepPurple,
+                              Icons.arrow_forward_ios,
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -125,10 +148,10 @@ class _TheoryScreenState extends State<TheoryScreen> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => SelectedTheory(
-                                        theory: theoryInfo[index]
-                                            ["theory_name"],
-                                        topicList:
-                                            theoryInfo[index]["topics"] as List,
+                                        theory: filteredTheoryList[index]
+                                            .theory_name as String,
+                                        topicList: filteredTheoryList[index]
+                                            .topics as List,
                                       )));
                         },
                       ),
