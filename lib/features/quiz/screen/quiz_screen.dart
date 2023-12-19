@@ -3,7 +3,6 @@ import 'package:flutter_learn_app/features/quiz/model/quiz.dart';
 import 'package:flutter_learn_app/features/quiz/widgets/answer_list_widget.dart';
 import 'package:flutter_learn_app/features/quiz/widgets/next_button.dart';
 import 'package:flutter_learn_app/features/quiz/widgets/question_widget.dart';
-import 'package:flutter_learn_app/features/quiz/widgets/show_score_widget.dart';
 import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
 
 class QuizScreen extends StatefulWidget {

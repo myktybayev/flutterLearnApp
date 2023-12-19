@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_learn_app/features/theory/screens/selected_theory.dart';
 
-import '../models/theories_topic_model.dart';
 
 class TheoryScreen extends StatefulWidget {
   const TheoryScreen({super.key});
@@ -26,30 +25,17 @@ class _TheoryScreenState extends State<TheoryScreen> {
   }
   // "json/theories_topic.json"
 
-  List<TheoryList> _theory = [];
-
   @override
   void initState() {
-    _theory = theoriesList;
     super.initState();
     readJson();
   }
 
   void _runFilter(String enteredKeyword) {
-    List<TheoryList> results = [];
     if (enteredKeyword.isEmpty) {
-      results = theoriesList;
-    } else {
-      results = theoriesList
-          .where((topic) => topic.theoryTopic
-              .toLowerCase()
-              .contains(enteredKeyword.toLowerCase()))
-          .toList();
-    }
+    } else {}
 
-    setState(() {
-      _theory = results;
-    });
+    setState(() {});
   }
 
   @override
