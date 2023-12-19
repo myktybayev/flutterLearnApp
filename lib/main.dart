@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
 import 'package:flutter_learn_app/screens/home_screen.dart';
 
 import 'screens/saved_screen.dart';
@@ -29,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = [
     HomeScreen(),
     SavedScreen(),
-    ProfileScreen(),
+    TheoryScreen(),
   ];
 
   @override
