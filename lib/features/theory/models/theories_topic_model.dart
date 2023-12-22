@@ -1,25 +1,37 @@
 class TheoryList {
-  String? theory_name;
+  String? theoryName;
   List<String>? topics;
-  List<String>? topics_pharagraph;
+  List<String>? topicsPharagraph;
 
   TheoryList({
-    this.theory_name,
+    this.theoryName,
     this.topics,
-    this.topics_pharagraph,
+    this.topicsPharagraph,
   });
 
   TheoryList.fromJson(Map<String, dynamic> json) {
-    theory_name = json['theory_name'];
+    theoryName = json['theory_name'];
     topics = List<String>.from(json['topics'] ?? []);
-    topics_pharagraph = List<String>.from(json['topics_paragraph'] ?? []);
+    topicsPharagraph = List<String>.from(json['topics_pharagraph'] ?? []);
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'theory_name': theory_name,
+      'theory_name': theoryName,
       'topics': topics,
-      'topics_pharagraph': topics_pharagraph,
+      'topics_pharagraph': topicsPharagraph,
     };
   }
 }
+
+/*
+Theory_Quiz
+
+t1_quiz1
+t1_quiz2
+t1_quiz3
+
+t2_quiz1
+t2_quiz2
+
+ */

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
 import 'package:flutter_learn_app/screens/home_screen.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'screens/saved_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final theoriesDir = await getApplicationDocumentsDirectory();
+  Hive.init(theoriesDir.path);
+
   runApp(const MyApp());
 }
 
@@ -32,9 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _pages = [
     HomeScreen(),
-    const TheoryScreen(),
+    TheoryScreen(),
     SavedScreen(),
-    ProfileScreen(),
+    const ProfileScreen(),
   ];
   List<String> pageNames = ["Курсы", "Теорий", "Сохраненные", "Профиль"];
 

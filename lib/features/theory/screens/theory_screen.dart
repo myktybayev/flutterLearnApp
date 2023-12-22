@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_learn_app/features/theory/screens/selected_theory.dart';
+import 'package:flutter_learn_app/features/theory/screens/theory_statics.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../models/theories_topic_model.dart';
 
 class TheoryScreen extends StatefulWidget {
-  const TheoryScreen({super.key});
+  TheoryScreen({super.key});
 
   @override
   State<TheoryScreen> createState() => _TheoryScreenState();
@@ -15,11 +17,12 @@ class TheoryScreen extends StatefulWidget {
 
 class _TheoryScreenState extends State<TheoryScreen> {
   late List<TheoryList> theoryList;
-  late List<TheoryList> filteredTheoryList;
+  List<TheoryList> filteredTheoryList = [];
 
   @override
   void initState() {
     super.initState();
+
     readJson().then((loadedData) {
       setState(() {
         theoryList = loadedData;
@@ -29,19 +32,6 @@ class _TheoryScreenState extends State<TheoryScreen> {
   }
 
   List theoryInfo = [];
-
-  // Future<List<TheoryList>> readJson() async {
-  //   final String response =
-  //       await rootBundle.loadString('json/theories_topic.json');
-  //   final data = await json.decode(response);
-  //
-  //   setState(() {
-  //     theoryInfo = data["items"];
-  //   });
-  //   List<TheoryList> items =
-  //       data.map((json) => TheoryList.fromJson(json)).toList();
-  //   return items;
-  // }
 
   Future<List<TheoryList>> readJson() async {
     final String response =
@@ -56,7 +46,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
       results = theoryList;
     } else {
       results = theoryList
-          .where((theory) => theory.theory_name!
+          .where((theory) => theory.theoryName!
               .toLowerCase()
               .contains(enteredKeyword.toLowerCase()))
           .toList();
@@ -73,7 +63,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         title: const Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: EdgeInsets.only(left: 10),
           child: Text(
             "Theories",
             style: TextStyle(
@@ -93,15 +83,6 @@ class _TheoryScreenState extends State<TheoryScreen> {
           children: [
             TextField(
               onChanged: (value) => _runFilter(value),
-              // onChanged: (value) {
-              //   setState(() {
-              //     filteredTheoryList = theoryList
-              //         .where((theory) => theory.theory_name!
-              //             .toLowerCase()
-              //             .contains(value.toLowerCase()))
-              //         .toList();
-              //   });
-              // },
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -133,14 +114,41 @@ class _TheoryScreenState extends State<TheoryScreen> {
                             color: Colors.black.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          child: ListTile(
-                            title: Text(
-                              filteredTheoryList[index].theory_name ?? '',
-                            ),
-                            trailing: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                            ),
+                          child: Column(
+                            children: [
+                              ListTile(
+                                title: Text(
+                                  filteredTheoryList[index].theoryName ?? '',
+                                ),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.black.withOpacity(0.7),
+                                ),
+                                leading: InkWell(
+                                  onTap: () {
+                                    print("asdasdasda");
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                StaticsScreen()));
+                                  },
+                                  child: CircularPercentIndicator(
+                                    circularStrokeCap: CircularStrokeCap.round,
+                                    radius: 20.0,
+                                    lineWidth: 5.0,
+                                    percent: 0.75,
+                                    center: const Text(
+                                      "75%",
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                    progressColor: Colors.deepPurple,
+                                    backgroundColor:
+                                        Colors.deepPurple.withOpacity(0.2),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         onTap: () {
@@ -149,9 +157,12 @@ class _TheoryScreenState extends State<TheoryScreen> {
                               MaterialPageRoute(
                                   builder: (context) => SelectedTheory(
                                         theory: filteredTheoryList[index]
-                                            .theory_name as String,
+                                            .theoryName as String,
                                         topicList: filteredTheoryList[index]
                                             .topics as List,
+                                        topicsPharagraph:
+                                            filteredTheoryList[index]
+                                                .topicsPharagraph as List,
                                       )));
                         },
                       ),
