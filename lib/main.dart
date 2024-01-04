@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
+import 'package:flutter_learn_app/features/theory/screens/ui_screen.dart';
 import 'package:flutter_learn_app/screens/home_screen.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart';
@@ -41,8 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
     TheoryScreen(),
     SavedScreen(),
     const ProfileScreen(),
+    const UIScreen(),
   ];
-  List<String> pageNames = ["Курсы", "Теорий", "Сохраненные", "Профиль"];
+  List<String> pageNames = [
+    "Курсы",
+    "Теорий",
+    "Сохраненные",
+    "Профиль",
+    "Ui Kit",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.deepPurple,
             ),
             label: pageNames[3],
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(
+              Icons.abc_sharp,
+              color: Colors.deepPurple,
+            ),
+            label: pageNames[4],
           ),
         ],
         selectedItemColor: Color(0xFF4B3FBB),
