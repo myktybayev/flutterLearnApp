@@ -43,10 +43,6 @@ class _StaticsScreenState extends State<StaticsScreen> {
         ),
       ),
       body: _buildUi(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _displayTextInputTheory(context),
-        child: Icon(Icons.add),
-      ),
     );
   }
 
@@ -59,39 +55,39 @@ class _StaticsScreenState extends State<StaticsScreen> {
     return ValueListenableBuilder(
         valueListenable: _theoryBox!.listenable(),
         builder: (context, box, widget) {
-          final theoyrKeys = box.keys.toList();
-          return SizedBox(
+          return Padding(
+            padding: const EdgeInsets.all(15),
             child: ListView.builder(
-                itemCount: theoyrKeys.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      index.toString(),
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    InkWell(
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            ListTile(
+                              title: Text(
+                                index.toString() +
+                                    " exam's point is - " +
+                                    (index + 5).toString(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  );
-                }),
-          );
-        });
-  }
-
-  Future<void> _displayTextInputTheory(BuildContext context) async {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("jomart"),
-            content: TextField(
-              controller: _textEditingController,
-              decoration: InputDecoration(hintText: "theory..."),
+                    const SizedBox(
+                      height: 10,
+                    )
+                  ],
+                );
+              },
             ),
-            actions: [
-              MaterialButton(
-                color: Colors.deepPurple,
-                textColor: Colors.white,
-                onPressed: () {},
-                child: Text("OK"),
-              ),
-            ],
           );
         });
   }

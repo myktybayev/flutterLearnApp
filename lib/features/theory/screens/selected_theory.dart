@@ -22,7 +22,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    // final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
@@ -68,6 +68,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
               controller: PageController(viewportFraction: 1),
               itemCount: widget.topicList.length,
               itemBuilder: (BuildContext context, int index) {
+                // final isLastItem = index == theoryTopicList.length - 1;
                 return DecoratedBox(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -100,7 +101,17 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                               ),
                             ),
                           ),
-                        )
+                        ),
+                        // if (isLastItem)
+                        //   ElevatedButton(
+                        //       onPressed: () {
+                        //         Navigator.push(
+                        //             context,
+                        //             MaterialPageRoute(
+                        //                 builder: (context) =>
+                        //                     const QuizScreen()));
+                        //       },
+                        //       child: const Text('Проверь себя (тест)'))
                       ],
                     ),
                   ),
