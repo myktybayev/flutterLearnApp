@@ -23,7 +23,7 @@ class NextButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.sizeOf(context).width *0.5,
+      width: MediaQuery.sizeOf(context).width * 0.5,
       height: 48,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -45,7 +45,7 @@ class NextButtonWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const TheoryScreen(),
+                      builder: (context) => TheoryScreen(),
                     ),
                   );
                 },

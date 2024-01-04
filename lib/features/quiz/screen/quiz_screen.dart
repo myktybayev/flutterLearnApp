@@ -88,7 +88,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TheoryScreen(),
+                    builder: (context) => TheoryScreen(),
                   ),
                 );
               },

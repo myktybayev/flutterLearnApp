@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/quiz/screen/quiz_screen.dart';
 
-import '../models/theory_topic_model.dart';
 import 'only_indicator.dart';
 
 class SelectedTheory extends StatefulWidget {
   final String theory;
   final List topicList;
+  final List topicsPharagraph;
 
-  const SelectedTheory(
-      {super.key, required this.theory, required this.topicList});
+  const SelectedTheory({
+    super.key,
+    required this.theory,
+    required this.topicList,
+    required this.topicsPharagraph,
+  });
 
   @override
   State<SelectedTheory> createState() => _SelectedTheoryState();
@@ -19,6 +22,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
@@ -41,7 +45,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -64,18 +68,18 @@ class _SelectedTheoryState extends State<SelectedTheory> {
               controller: PageController(viewportFraction: 1),
               itemCount: widget.topicList.length,
               itemBuilder: (BuildContext context, int index) {
-                final isLastItem = index == theoryTopicList.length - 1;
+                // final isLastItem = index == theoryTopicList.length - 1;
                 return DecoratedBox(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Container(
-                    margin: const EdgeInsets.only(
-                        bottom: 150, top: 80, left: 15, right: 15),
+                    margin: const EdgeInsets.only(top: 50, left: 15, right: 15),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.topicList[index].toUpperCase(),
+                          widget.topicList[index].toUpperCase().toString(),
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
@@ -84,23 +88,30 @@ class _SelectedTheoryState extends State<SelectedTheory> {
                         const SizedBox(
                           height: 25,
                         ),
-                        Text(
-                          theoryTopicList[index].topics_pharagraph,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 20,
+                        Expanded(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Text(
+                              widget.topicsPharagraph[index]
+                                  .toUpperCase()
+                                  .toString(),
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                         ),
-                        if (isLastItem)
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const QuizScreen()));
-                              },
-                              child: const Text('Проверь себя (тест)'))
+                        // if (isLastItem)
+                        //   ElevatedButton(
+                        //       onPressed: () {
+                        //         Navigator.push(
+                        //             context,
+                        //             MaterialPageRoute(
+                        //                 builder: (context) =>
+                        //                     const QuizScreen()));
+                        //       },
+                        //       child: const Text('Проверь себя (тест)'))
                       ],
                     ),
                   ),
