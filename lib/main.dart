@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn_app/features/profile/screen/profile_screen.dart';
 import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
 import 'package:flutter_learn_app/features/theory/screens/ui_screen.dart';
 import 'package:flutter_learn_app/screens/home_screen.dart';
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomeScreen(),
     TheoryScreen(),
     SavedScreen(),
-    const ProfileScreen(),
+    ProfileScreen(),
     const UIScreen(),
   ];
   List<String> pageNames = [
@@ -102,17 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         selectedItemColor: Color(0xFF4B3FBB),
       ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Profile Screen'),
     );
   }
 }
