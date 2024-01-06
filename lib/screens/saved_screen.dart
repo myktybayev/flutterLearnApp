@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Course {
-  final String title;
-  final int progress;
-  bool isSaved;
-  final String imageUrl;
-
-  Course(this.title, this.progress, this.imageUrl, {this.isSaved = false});
-}
+import 'package:flutter_learn_app/screens/home/models/course.dart';
 
 class SavedScreen extends StatefulWidget {
   static List<Course> savedCourses = [];

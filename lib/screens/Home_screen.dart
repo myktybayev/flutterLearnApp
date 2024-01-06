@@ -1,81 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learn_app/screens/home/home_cubit.dart';
+import 'package:flutter_learn_app/screens/home/models/course.dart';
 import 'package:flutter_learn_app/screens/home_screens.dart';
 
-class Course {
-  final String title;
-  final int progress;
-  bool isSaved;
-  final String imageUrl;
-
-  Course(this.title, this.progress, this.imageUrl, {this.isSaved = false});
-}
-
 class HomeScreen extends StatefulWidget {
+  static const routeName = 'home';
+  const HomeScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Course> courses = [
-    Course('Основы веб разработки и создания сайта', 60,
-        'https://media.proglib.io/posts/2020/07/19/6bfa435a69336cd0808fa7267b246c60.png'),
-    Course('Основы программирования(Python)', 40,
-        'https://it-cube48.ru/wp-content/uploads/2020/08/Chto-takoe-Python_1000-0.jpg'),
-    Course(
-        'Основы разработки приложения(Android)',
-        20,
-        'https://www.antis.kz/upload/iblock/b2f/c217hfbfnokovdaj7hkf89fd1bgs4l2n.png'),
-            Course('Основы веб разработки и создания сайта', 60,
-        'https://media.proglib.io/posts/2020/07/19/6bfa435a69336cd0808fa7267b246c60.png'),
-    Course('Основы программирования(Python)', 40,
-        'https://it-cube48.ru/wp-content/uploads/2020/08/Chto-takoe-Python_1000-0.jpg'),
-    Course(
-        'Основы разработки приложения(Android)',
-        20,
-        'https://www.antis.kz/upload/iblock/b2f/c217hfbfnokovdaj7hkf89fd1bgs4l2n.png'),
-  ];
 
-  List<Course> filteredCourses = [];
+  HomeCubit get bloc => context.read<HomeCubit>();
 
   @override
   void initState() {
     super.initState();
-    filteredCourses.addAll(courses);
-  }
-
-  void filterSearchResults(String query) {
-    List<Course> searchResults = [];
-    searchResults.addAll(courses);
-
-    if (query.isNotEmpty) {
-      searchResults.retainWhere(
-          (course) => course.title.toLowerCase().contains(query.toLowerCase()));
-    }
-
-    searchResults.sort((a, b) {
-      List<String> priorityCourses = [
-        'Основы веб разработки и создания сайта',
-        'Основы программирования(Python)',
-        'Основы разработки приложения(Android)',
-      ];
-
-      if (priorityCourses.contains(a.title) && !priorityCourses.contains(b.title)) {
-        return -1;
-      } else if (!priorityCourses.contains(a.title) && priorityCourses.contains(b.title)) {
-        return 1;
-      } else {
-        return b.progress.compareTo(a.progress);
-      }
-    });
-
-    setState(() {
-      filteredCourses.clear();
-      filteredCourses.addAll(searchResults);
-    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<HomeCubit>().state;
+    final courses = state.courses;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -84,9 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
               child: TextField(
                 onChanged: (value) {
-                  filterSearchResults(value);
+                  // filterSearchResults(value);
+                  bloc.searchQuery(value);
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Поиск курса...',
                   prefixIcon: Icon(Icons.search, color: Color(0xFF4B3FBB)),
                   border: OutlineInputBorder(
@@ -97,29 +49,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                   ),
                 ),
-                cursorColor: Color(0xFF4B3FBB),
+                cursorColor: const Color(0xFF4B3FBB),
               ),
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: filteredCourses.length,
+                itemCount: courses.length,
                 itemBuilder: (context, index) {
                   return CourseItem(
-                    course: filteredCourses[index],
+                    course: courses[index],
                     onSavePressed: () {
-                      setState(() {
-                        filteredCourses[index].isSaved =
-                            !filteredCourses[index].isSaved;
-                      });
+                      // setState(() {
+                      //   courses[index].isSaved = !courses[index].isSaved;
+                      // });
                     },
                     onCoursePressed: () {
-           
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => HomeScreens(
-                            // course: filteredCourses[index],
-                          ),
+                              // course: filteredCourses[index],
+                              ),
                         ),
                       );
                     },
@@ -139,7 +89,7 @@ class CourseItem extends StatelessWidget {
   final VoidCallback onSavePressed;
   final VoidCallback onCoursePressed;
 
-  CourseItem({
+  const CourseItem({
     required this.course,
     required this.onSavePressed,
     required this.onCoursePressed,
@@ -150,8 +100,8 @@ class CourseItem extends StatelessWidget {
     return InkWell(
       onTap: onCoursePressed,
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-        padding: EdgeInsets.all(10.0),
+        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.0),
@@ -160,7 +110,7 @@ class CourseItem extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
@@ -186,7 +136,7 @@ class CourseItem extends StatelessWidget {
                     top: 8.0,
                     right: 8.0,
                     child: IconButton(
-                      icon: Icon(Icons.favorite_border),
+                      icon: const Icon(Icons.favorite_border),
                       color: course.isSaved ? Color(0xFF4B3FBB) : Colors.white,
                       onPressed: onSavePressed,
                     ),
@@ -194,22 +144,23 @@ class CourseItem extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Text(
               course.title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0,
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             LinearProgressIndicator(
               value: course.progress / 100,
               backgroundColor: Colors.grey,
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4B3FBB)),
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(Color(0xFF4B3FBB)),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
           ],
         ),
       ),
@@ -220,7 +171,7 @@ class CourseItem extends StatelessWidget {
 class CourseDetailsScreen extends StatelessWidget {
   final Course course;
 
-  CourseDetailsScreen({required this.course});
+  const CourseDetailsScreen({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
@@ -229,13 +180,13 @@ class CourseDetailsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: SafeArea(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -245,8 +196,7 @@ class CourseDetailsScreen extends StatelessWidget {
                       Icons.favorite,
                       color: course.isSaved ? Colors.red : Colors.grey,
                     ),
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -254,32 +204,29 @@ class CourseDetailsScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 50.0),
-                Text(
-                  course.title,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const SizedBox(height: 50.0),
+              Text(
+                course.title,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(height: 16.0),
-                LinearProgressIndicator(
-                  value: course.progress / 100,
-                  backgroundColor: Colors.grey,
-                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4B3FBB)),
-                ),
-                SizedBox(height: 16.0),
-              
-                SizedBox(height: 8.0),
-          ]
-            ),
+              ),
+              const SizedBox(height: 16.0),
+              LinearProgressIndicator(
+                value: course.progress / 100,
+                backgroundColor: Colors.grey,
+                valueColor:
+                    const AlwaysStoppedAnimation<Color>(Color(0xFF4B3FBB)),
+              ),
+              const SizedBox(height: 16.0),
+              const SizedBox(height: 8.0),
+            ]),
           ),
         ],
       ),
     );
   }
 }
-
