@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/screens/Home_screen.dart';
-import 'package:flutter_learn_app/screens/home/home_cubit.dart';
+import 'package:flutter_learn_app/screens/courses_screen.dart';
+import 'package:flutter_learn_app/screens/home/courses_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 class AppRoutes {
@@ -18,11 +18,11 @@ class AppRoutes {
   static Route<Object?>? generateRoute(RouteSettings settings) {
     final routeName = settings.name;
     switch (routeName) {
-      case HomeScreen.routeName:
+      case CoursesScreen.routeName:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (_) => _di.get<HomeCubit>(),
-            child: const HomeScreen(),
+            create: (_) => _di.get<CoursesCubit>(),
+            child: const CoursesScreen(),
           ),
         );
     }

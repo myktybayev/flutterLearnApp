@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_state.dart';
+part of 'courses_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,26 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$CoursesState {
   List<Course> get courses => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeStateCopyWith<HomeState> get copyWith =>
+  $CoursesStateCopyWith<CoursesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+abstract class $CoursesStateCopyWith<$Res> {
+  factory $CoursesStateCopyWith(
+          CoursesState value, $Res Function(CoursesState) then) =
+      _$CoursesStateCopyWithImpl<$Res, CoursesState>;
   @useResult
   $Res call({List<Course> courses});
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$CoursesStateCopyWithImpl<$Res, $Val extends CoursesState>
+    implements $CoursesStateCopyWith<$Res> {
+  _$CoursesStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -56,21 +57,22 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 }
 
 /// @nodoc
-abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$$_HomeStateCopyWith(
-          _$_HomeState value, $Res Function(_$_HomeState) then) =
-      __$$_HomeStateCopyWithImpl<$Res>;
+abstract class _$$_CoursesStateCopyWith<$Res>
+    implements $CoursesStateCopyWith<$Res> {
+  factory _$$_CoursesStateCopyWith(
+          _$_CoursesState value, $Res Function(_$_CoursesState) then) =
+      __$$_CoursesStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Course> courses});
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_HomeState>
-    implements _$$_HomeStateCopyWith<$Res> {
-  __$$_HomeStateCopyWithImpl(
-      _$_HomeState _value, $Res Function(_$_HomeState) _then)
+class __$$_CoursesStateCopyWithImpl<$Res>
+    extends _$CoursesStateCopyWithImpl<$Res, _$_CoursesState>
+    implements _$$_CoursesStateCopyWith<$Res> {
+  __$$_CoursesStateCopyWithImpl(
+      _$_CoursesState _value, $Res Function(_$_CoursesState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +80,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
   $Res call({
     Object? courses = null,
   }) {
-    return _then(_$_HomeState(
+    return _then(_$_CoursesState(
       courses: null == courses
           ? _value._courses
           : courses // ignore: cast_nullable_to_non_nullable
@@ -89,8 +91,8 @@ class __$$_HomeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeState implements _HomeState {
-  const _$_HomeState({required final List<Course> courses})
+class _$_CoursesState implements _CoursesState {
+  const _$_CoursesState({required final List<Course> courses})
       : _courses = courses;
 
   final List<Course> _courses;
@@ -103,14 +105,14 @@ class _$_HomeState implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(courses: $courses)';
+    return 'CoursesState(courses: $courses)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeState &&
+            other is _$_CoursesState &&
             const DeepCollectionEquality().equals(other._courses, _courses));
   }
 
@@ -121,18 +123,18 @@ class _$_HomeState implements _HomeState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
-      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
+  _$$_CoursesStateCopyWith<_$_CoursesState> get copyWith =>
+      __$$_CoursesStateCopyWithImpl<_$_CoursesState>(this, _$identity);
 }
 
-abstract class _HomeState implements HomeState {
-  const factory _HomeState({required final List<Course> courses}) =
-      _$_HomeState;
+abstract class _CoursesState implements CoursesState {
+  const factory _CoursesState({required final List<Course> courses}) =
+      _$_CoursesState;
 
   @override
   List<Course> get courses;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+  _$$_CoursesStateCopyWith<_$_CoursesState> get copyWith =>
       throw _privateConstructorUsedError;
 }

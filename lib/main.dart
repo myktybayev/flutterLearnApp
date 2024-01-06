@@ -3,11 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/di/di_resolver.dart';
 import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
 import 'package:flutter_learn_app/features/theory/screens/ui_screen.dart';
-import 'package:flutter_learn_app/screens/home/home_cubit.dart';
-import 'package:flutter_learn_app/screens/home_screen.dart';
+import 'package:flutter_learn_app/screens/courses_screen.dart';
+import 'package:flutter_learn_app/screens/home/courses_cubit.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:path_provider/path_provider.dart';
 
 import 'screens/saved_screen.dart';
 
@@ -29,9 +27,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MultiBlocProvider(
-          providers: [BlocProvider(create: (context) => _di.get<HomeCubit>())],
-          child: const MyHomePage()),
+      home: MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => _di.get<CoursesCubit>())
+      ], child: const MyHomePage()),
     );
   }
 }
@@ -48,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const HomeScreen(),
+    const CoursesScreen(),
     TheoryScreen(),
     SavedScreen(),
     const ProfileScreen(),

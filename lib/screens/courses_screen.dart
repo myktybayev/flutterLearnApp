@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/screens/home/home_cubit.dart';
+import 'package:flutter_learn_app/screens/home/courses_cubit.dart';
 import 'package:flutter_learn_app/screens/home/models/course.dart';
 import 'package:flutter_learn_app/screens/home_screens.dart';
 
-class HomeScreen extends StatefulWidget {
+class CoursesScreen extends StatefulWidget {
   static const routeName = 'home';
-  const HomeScreen({super.key});
+  const CoursesScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomeScreenState createState() => _HomeScreenState();
+  _CoursesScreenState createState() => _CoursesScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-
-  HomeCubit get bloc => context.read<HomeCubit>();
+class _CoursesScreenState extends State<CoursesScreen> {
+  CoursesCubit get bloc => context.read<CoursesCubit>();
 
   @override
   void initState() {
@@ -24,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<HomeCubit>().state;
+    final state = context.watch<CoursesCubit>().state;
     final courses = state.courses;
 
     return Scaffold(
