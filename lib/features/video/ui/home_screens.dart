@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/models/channel_model.dart';
-import 'package:flutter_learn_app/models/video_model.dart';
-import 'package:flutter_learn_app/screens/video_screen.dart';
-import 'package:flutter_learn_app/services/api_service.dart';
+import 'package:flutter_learn_app/features/video/domain/model/channel_model.dart';
+import 'package:flutter_learn_app/features/video/domain/model/video_model.dart';
+import 'package:flutter_learn_app/features/video/ui/video_screen.dart';
+import 'package:flutter_learn_app/features/video/domain/services/api_service.dart';
 
 class HomeScreens extends StatefulWidget {
+  const HomeScreens({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreensState createState() => _HomeScreensState();
 }
 
@@ -36,10 +39,10 @@ class _HomeScreensState extends State<HomeScreens> {
         ),
       ),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-        padding: EdgeInsets.all(10.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+        padding: const EdgeInsets.all(10.0),
         height: 140.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -55,11 +58,11 @@ class _HomeScreensState extends State<HomeScreens> {
               width: 150.0,
               image: NetworkImage(video.thumbnailUrl),
             ),
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Expanded(
               child: Text(
                 video.title,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
                 ),
@@ -90,7 +93,7 @@ class _HomeScreensState extends State<HomeScreens> {
     final channel = _channel;
     return Scaffold(
       appBar: AppBar(
-        title: Text('YouTube Channel'),
+        title: const Text('YouTube Channel'),
       ),
       body: channel != null
           ? NotificationListener<ScrollNotification>(
@@ -139,10 +142,10 @@ class BuildProfileInfo extends StatelessWidget {
 
     return channel != null
         ? Container(
-            margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(20.0),
+            margin: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             height: 100.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -159,7 +162,7 @@ class BuildProfileInfo extends StatelessWidget {
                   radius: 35.0,
                   backgroundImage: NetworkImage(channel.profilePictureUrl),
                 ),
-                SizedBox(width: 12.0),
+                const SizedBox(width: 12.0),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -167,7 +170,7 @@ class BuildProfileInfo extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         channel.title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 20.0,
                           fontWeight: FontWeight.w600,

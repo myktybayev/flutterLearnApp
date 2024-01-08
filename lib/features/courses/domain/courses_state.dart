@@ -1,4 +1,4 @@
-import 'package:flutter_learn_app/screens/home/models/course.dart';
+import 'package:flutter_learn_app/features/courses/models/course.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'courses_state.freezed.dart';

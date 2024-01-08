@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/screens/home/courses_state.dart';
-import 'package:flutter_learn_app/screens/home/models/course.dart';
+import 'package:flutter_learn_app/features/courses/courses_state.dart';
+import 'package:flutter_learn_app/features/courses/models/course.dart';
 
 class CoursesCubit extends Cubit<CoursesState> {
   CoursesCubit() : super(const CoursesState(courses: courses));
@@ -49,6 +49,6 @@ class CoursesCubit extends Cubit<CoursesState> {
         .where((course) =>
             course.title.toLowerCase().contains(query.toLowerCase()))
         .toList();
-        emit(CoursesState(courses: filteredCourses));
+    emit(CoursesState(courses: filteredCourses));
   }
 }

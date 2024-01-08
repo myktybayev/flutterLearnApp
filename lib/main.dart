@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/di/di_resolver.dart';
-import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
-import 'package:flutter_learn_app/features/theory/screens/ui_screen.dart';
-import 'package:flutter_learn_app/screens/courses_screen.dart';
-import 'package:flutter_learn_app/screens/home/courses_cubit.dart';
+import 'package:flutter_learn_app/features/courses/domain/courses_cubit.dart';
+import 'package:flutter_learn_app/features/theory/ui/theory_screen.dart';
+import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
+import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
+import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
 import 'package:get_it/get_it.dart';
-
-import 'screens/saved_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = [
     const CoursesScreen(),
     TheoryScreen(),
-    SavedScreen(),
+    const SavedScreen(),
     const ProfileScreen(),
     const UIScreen(),
   ];

@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learn_app/screens/home/courses_repository.dart';
-import 'package:flutter_learn_app/screens/home/courses_repository_impl.dart';
-import 'package:flutter_learn_app/screens/home/courses_service.dart';
-import 'package:flutter_learn_app/screens/home/courses_service_impl.dart';
-import 'package:flutter_learn_app/screens/home/courses_cubit.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_repository.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_repository_impl.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_service.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_service_impl.dart';
+import 'package:flutter_learn_app/features/courses/domain/courses_cubit.dart';
+
 import 'package:get_it/get_it.dart';
 
 class DiResolver {
@@ -38,6 +39,7 @@ class DiResolver {
   }
 
   static void _registerRepositories() {
-    _di.registerLazySingleton<CoursesRepository>(() => CoursesRepositoryImpl(coursesService: _di.get<CoursesService>()));
+    _di.registerLazySingleton<CoursesRepository>(
+        () => CoursesRepositoryImpl(coursesService: _di.get<CoursesService>()));
   }
 }

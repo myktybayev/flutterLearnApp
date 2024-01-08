@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/screens/home/courses_cubit.dart';
-import 'package:flutter_learn_app/screens/home/models/course.dart';
+import 'package:flutter_learn_app/features/courses/courses_cubit.dart';
+import 'package:flutter_learn_app/features/courses/models/course.dart';
 import 'package:flutter_learn_app/screens/home_screens.dart';
 
 class CoursesScreen extends StatefulWidget {

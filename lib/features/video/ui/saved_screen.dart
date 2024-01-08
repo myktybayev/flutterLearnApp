@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/screens/home/models/course.dart';
+import 'package:flutter_learn_app/features/courses/models/course.dart';
 
 class SavedScreen extends StatefulWidget {
   static List<Course> savedCourses = [];

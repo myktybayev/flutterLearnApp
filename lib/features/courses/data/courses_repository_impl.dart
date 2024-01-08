@@ -1,5 +1,5 @@
-import 'package:flutter_learn_app/screens/home/courses_repository.dart';
-import 'package:flutter_learn_app/screens/home/courses_service.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_repository.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_service.dart';
 
 class CoursesRepositoryImpl implements CoursesRepository {
   final CoursesService coursesService;
@@ -8,8 +8,6 @@ class CoursesRepositoryImpl implements CoursesRepository {
 
   @override
   Future<void> getAllCourses() async {
-    final courses = await coursesService.getCourses();
-    
     throw UnimplementedError();
   }
 }

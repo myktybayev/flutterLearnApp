@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learn_app/screens/home/courses_service.dart';
+import 'package:flutter_learn_app/features/courses/courses_service.dart';
 
 class CoursesServiceImpl implements CoursesService {
   final Dio dio;
@@ -11,7 +11,6 @@ class CoursesServiceImpl implements CoursesService {
     try {
       final response = await dio.get('/courses');
       response.data;
-      
     } on Object catch (_) {
       rethrow;
     }

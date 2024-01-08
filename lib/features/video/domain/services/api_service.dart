@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter_learn_app/constants/constants.dart';
+import 'package:flutter_learn_app/features/video/domain/model/channel_model.dart';
+import 'package:flutter_learn_app/features/video/domain/model/video_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_learn_app/models/channel_model.dart';
-import 'package:flutter_learn_app/models/video_model.dart';
-import 'package:flutter_learn_app/utilities/keys.dart';
 
 class APIService {
   APIService._instantiate();
@@ -42,7 +42,8 @@ class APIService {
     }
   }
 
-  Future<List<Video>> fetchVideosFromPlaylist({required String playlistId}) async {
+  Future<List<Video>> fetchVideosFromPlaylist(
+      {required String playlistId}) async {
     Map<String, String> parameters = {
       'part': 'snippet',
       'playlistId': playlistId,
@@ -77,5 +78,4 @@ class APIService {
       throw json.decode(response.body)['error']['message'];
     }
   }
-
 }
