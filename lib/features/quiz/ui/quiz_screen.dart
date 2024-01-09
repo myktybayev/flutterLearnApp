@@ -3,7 +3,7 @@ import 'package:flutter_learn_app/features/quiz/data/quiz.dart';
 import 'package:flutter_learn_app/features/quiz/domain/widgets/answer_list_widget.dart';
 import 'package:flutter_learn_app/features/quiz/domain/widgets/next_button.dart';
 import 'package:flutter_learn_app/features/quiz/domain/widgets/question_widget.dart';
-import 'package:flutter_learn_app/features/theory/ui/theory_screen.dart';
+import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});

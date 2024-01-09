@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_app/features/quiz/domain/widgets/show_score_widget.dart';
-import 'package:flutter_learn_app/features/theory/ui/theory_screen.dart';
+import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
 
 class NextButtonWidget extends StatelessWidget {
   final bool isLastQuestion;
