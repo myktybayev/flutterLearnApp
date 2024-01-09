@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/di/di_resolver.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
+import 'package:flutter_learn_app/features/profile/screen/profile_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/theory_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
@@ -109,17 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         selectedItemColor: const Color(0xFF4B3FBB),
       ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Profile Screen'),
     );
   }
 }
