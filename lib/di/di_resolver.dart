@@ -3,7 +3,7 @@ import 'package:flutter_learn_app/features/courses/data/courses_repository.dart'
 import 'package:flutter_learn_app/features/courses/data/courses_repository_impl.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_service.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_service_impl.dart';
-import 'package:flutter_learn_app/features/courses/domain/courses_cubit.dart';
+import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 
 import 'package:get_it/get_it.dart';
 
@@ -31,6 +31,17 @@ class DiResolver {
     final dio = Dio(options);
 
     _di.registerLazySingleton<Dio>(() => dio);
+  }
+
+  static void _registerGoogleNetwork() {
+    final options = BaseOptions(
+      baseUrl: 'http://api.google.com',
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(seconds: 30),
+      sendTimeout: const Duration(seconds: 30),
+    );
+    final dio = Dio(options);
+    _di.registerLazySingleton<Dio>(() => dio, instanceName: 'Google');
   }
 
   static void _registerServices() {

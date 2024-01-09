@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/features/courses/domain/courses_cubit.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
+import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 class AppRoutes {

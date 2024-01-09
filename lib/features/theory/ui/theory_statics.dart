@@ -9,7 +9,6 @@ class StaticsScreen extends StatefulWidget {
 }
 
 class _StaticsScreenState extends State<StaticsScreen> {
-  final TextEditingController _textEditingController = TextEditingController();
   Box? _theoryBox;
 
   @override
@@ -27,9 +26,9 @@ class _StaticsScreenState extends State<StaticsScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text(
+        title: const Text(
           "Point of Exams",
-          style: const TextStyle(
+          style: TextStyle(
               fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         leading: const BackButton(
@@ -48,7 +47,7 @@ class _StaticsScreenState extends State<StaticsScreen> {
 
   Widget _buildUi() {
     if (_theoryBox == null) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     }
@@ -72,9 +71,7 @@ class _StaticsScreenState extends State<StaticsScreen> {
                           children: [
                             ListTile(
                               title: Text(
-                                index.toString() +
-                                    " exam's point is - " +
-                                    (index + 5).toString(),
+                                "$index exam's point is - ${index + 5}",
                               ),
                             ),
                           ],

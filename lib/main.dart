@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/di/di_resolver.dart';
-import 'package:flutter_learn_app/features/courses/domain/courses_cubit.dart';
+import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/theory_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(providers: [
-        BlocProvider(create: (context) => _di.get<CoursesCubit>())
+        BlocProvider(create: (context) => _di.get<CoursesCubit>()),
       ], child: const MyHomePage()),
     );
   }

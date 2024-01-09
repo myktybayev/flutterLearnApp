@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/quiz/model/quiz.dart';
+import 'package:flutter_learn_app/features/quiz/data/quiz.dart';
 
 class AnswerListWidget extends StatelessWidget {
   final Answer answer;
@@ -22,7 +22,8 @@ class AnswerListWidget extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: isSelected ? Colors.white : Colors.black,
-          backgroundColor: isSelected ? Colors.orangeAccent : Colors.grey.shade500,
+          backgroundColor:
+              isSelected ? Colors.orangeAccent : Colors.grey.shade500,
           shape: const StadiumBorder(),
         ),
         onPressed: () {

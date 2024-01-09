@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/courses/models/course.dart';
+import 'package:flutter_learn_app/features/courses/domain/models/course.dart';
 
 class SavedScreen extends StatefulWidget {
   static List<Course> savedCourses = [];
 
+  const SavedScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SavedScreenState createState() => _SavedScreenState();
 
   static void toggleSaved(Course filteredCourse) {
@@ -19,13 +22,15 @@ class SavedScreen extends StatefulWidget {
 class _SavedScreenState extends State<SavedScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SavedCoursesList(),
     );
   }
 }
 
 class SavedCoursesList extends StatelessWidget {
+  const SavedCoursesList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -40,7 +45,7 @@ class SavedCoursesList extends StatelessWidget {
 class SavedCourseItem extends StatelessWidget {
   final Course course;
 
-  SavedCourseItem({required this.course});
+  const SavedCourseItem({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {

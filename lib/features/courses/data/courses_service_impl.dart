@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learn_app/features/courses/courses_service.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_service.dart';
 
 class CoursesServiceImpl implements CoursesService {
   final Dio dio;

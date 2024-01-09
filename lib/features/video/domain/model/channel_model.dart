@@ -1,7 +1,6 @@
-import 'package:flutter_learn_app/models/video_model.dart';
+import 'package:flutter_learn_app/features/video/domain/model/video_model.dart';
 
 class Channel {
-
   final String id;
   final String title;
   final String profilePictureUrl;
@@ -11,13 +10,13 @@ class Channel {
   List<Video> videos;
 
   Channel({
-   required this.id,
-  required  this.title,
-  required  this.profilePictureUrl,
-  required  this.subscriberCount,
-  required  this.videoCount,
-  required  this.uploadPlaylistId,
-  required  this.videos,
+    required this.id,
+    required this.title,
+    required this.profilePictureUrl,
+    required this.subscriberCount,
+    required this.videoCount,
+    required this.uploadPlaylistId,
+    required this.videos,
   });
 
   factory Channel.fromMap(Map<String, dynamic> map) {
@@ -27,8 +26,8 @@ class Channel {
       profilePictureUrl: map['snippet']['thumbnails']['default']['url'],
       subscriberCount: map['statistics']['subscriberCount'],
       videoCount: map['statistics']['videoCount'],
-      uploadPlaylistId: map['contentDetails']['relatedPlaylists']['uploads'], videos: [],
+      uploadPlaylistId: map['contentDetails']['relatedPlaylists']['uploads'],
+      videos: [],
     );
   }
-
 }

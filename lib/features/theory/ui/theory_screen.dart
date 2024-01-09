@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_learn_app/features/theory/models/theories_topic_model.dart';
-import 'package:flutter_learn_app/features/theory/screens/selected_theory.dart';
-import 'package:flutter_learn_app/features/theory/screens/theory_statics.dart';
+import 'package:flutter_learn_app/features/theory/data/theories_topic_model.dart';
+import 'package:flutter_learn_app/features/theory/ui/selected_theory.dart';
+import 'package:flutter_learn_app/features/theory/ui/theory_statics.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TheoryScreen extends StatefulWidget {
