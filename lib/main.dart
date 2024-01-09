@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learn_app/di/di_resolver.dart';
+import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:flutter_learn_app/features/profile/screen/profile_screen.dart';
-import 'package:flutter_learn_app/features/theory/screens/theory_screen.dart';
-import 'package:flutter_learn_app/features/theory/screens/ui_screen.dart';
-import 'package:flutter_learn_app/screens/home_screen.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:path_provider/path_provider.dart';
-
-import 'screens/saved_screen.dart';
+import 'package:flutter_learn_app/features/theory/ui/theory_screen.dart';
+import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
+import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
+import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
+import 'package:get_it/get_it.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final theoriesDir = await getApplicationDocumentsDirectory();
-  Hive.init(theoriesDir.path);
+  await DiResolver.register();
+  // final theoriesDir = await getApplicationDocumentsDirectory();
+  // Hive.init(theoriesDir.path);
 
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  static final _di = GetIt.instance;
+
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => _di.get<CoursesCubit>()),
+      ], child: const MyHomePage()),
     );
   }
 }
@@ -32,6 +38,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
@@ -39,10 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    HomeScreen(),
+    const CoursesScreen(),
     TheoryScreen(),
-    SavedScreen(),
-    ProfileScreen(),
+    const SavedScreen(),
+    const ProfileScreen(),
     const UIScreen(),
   ];
   List<String> pageNames = [
@@ -101,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
             label: pageNames[4],
           ),
         ],
-        selectedItemColor: Color(0xFF4B3FBB),
+        selectedItemColor: const Color(0xFF4B3FBB),
       ),
     );
   }
