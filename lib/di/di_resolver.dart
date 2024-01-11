@@ -23,7 +23,7 @@ class DiResolver {
 
   static void _registerNetworking() {
     final options = BaseOptions(
-      baseUrl: 'http://api.pub.dev',
+      baseUrl: 'https://smavybe-production.up.railway.app',
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       sendTimeout: const Duration(seconds: 30),
