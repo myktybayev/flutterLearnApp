@@ -3,7 +3,7 @@ import 'package:flutter_learn_app/features/courses/domain/models/course.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_state.dart';
 
 class CoursesCubit extends Cubit<CoursesState> {
-  CoursesCubit() : super(const CoursesState(courses: courses));
+  CoursesCubit() : super(const CoursesState.loading());
 
   static const List<Course> courses = [
     Course(
@@ -44,11 +44,27 @@ class CoursesCubit extends Cubit<CoursesState> {
     ),
   ];
 
+  void init() async {
+    final coursesList = await Future.delayed(
+      const Duration(seconds: 3),
+      () => courses,
+    );
+
+    emit(CoursesState.loaded(courses: coursesList));
+  }
+
   void searchQuery(String query) {
     final filteredCourses = courses
         .where((course) =>
             course.title.toLowerCase().contains(query.toLowerCase()))
         .toList();
-    emit(state.copyWith(courses: filteredCourses));
+    state.mapOrNull(
+      loading: (loadingState) {},
+      loaded: (loadedState) => emit(
+        loadedState.copyWith(
+          courses: filteredCourses,
+        ),
+      ),
+    );
   }
 }
