@@ -18,65 +18,74 @@ class _CoursesScreenState extends State<CoursesScreen> {
 
   @override
   void initState() {
+    bloc.init();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final state = context.watch<CoursesCubit>().state;
-    final courses = state.courses;
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
-              child: TextField(
-                onChanged: (value) {
-                  // filterSearchResults(value);
-                  bloc.searchQuery(value);
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Поиск курса...',
-                  prefixIcon: Icon(Icons.search, color: Color(0xFF4B3FBB)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF4B3FBB)),
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
+        child: state.map(
+          loading: (loading) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          loaded: (loaded) {
+            final courses = loaded.courses;
+
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
+                  child: TextField(
+                    onChanged: (value) {
+                      // filterSearchResults(value);
+                      bloc.searchQuery(value);
+                    },
+                    decoration: const InputDecoration(
+                      hintText: 'Поиск курса...',
+                      prefixIcon: Icon(Icons.search, color: Color(0xFF4B3FBB)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF4B3FBB)),
+                        borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                      ),
+                    ),
+                    cursorColor: const Color(0xFF4B3FBB),
                   ),
                 ),
-                cursorColor: const Color(0xFF4B3FBB),
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: courses.length,
-                itemBuilder: (context, index) {
-                  return CourseItem(
-                    course: courses[index],
-                    onSavePressed: () {
-                      // setState(() {
-                      //   courses[index].isSaved = !courses[index].isSaved;
-                      // });
-                    },
-                    onCoursePressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreens(
-                              // course: filteredCourses[index],
-                              ),
-                        ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: courses.length,
+                    itemBuilder: (context, index) {
+                      return CourseItem(
+                        course: courses[index],
+                        onSavePressed: () {
+                          // setState(() {
+                          //   courses[index].isSaved = !courses[index].isSaved;
+                          // });
+                        },
+                        onCoursePressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreens(
+                                  // course: filteredCourses[index],
+                                  ),
+                            ),
+                          );
+                        },
                       );
                     },
-                  );
-                },
-              ),
-            ),
-          ],
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
