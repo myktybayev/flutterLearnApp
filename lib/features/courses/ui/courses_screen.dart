@@ -25,7 +25,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<CoursesCubit>().state;
-
     return Scaffold(
       body: SafeArea(
         child: state.map(

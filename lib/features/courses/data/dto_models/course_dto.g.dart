@@ -7,11 +7,11 @@ part of 'course_dto.dart';
 // **************************************************************************
 
 CourseDto _$CourseDtoFromJson(Map<String, dynamic> json) => CourseDto(
-      id: json['id'] as String,
+      id: json['_id'] as String,
       title: json['title'] as String,
     );
 
 Map<String, dynamic> _$CourseDtoToJson(CourseDto instance) => <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'title': instance.title,
     };

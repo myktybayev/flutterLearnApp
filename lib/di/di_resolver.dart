@@ -18,7 +18,8 @@ class DiResolver {
   }
 
   static void _registerCubits() {
-    _di.registerFactory<CoursesCubit>(() => CoursesCubit());
+    _di.registerFactory<CoursesCubit>(
+        () => CoursesCubit(_di.get<CoursesRepository>()));
   }
 
   static void _registerNetworking() {
