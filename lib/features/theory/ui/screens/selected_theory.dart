@@ -22,6 +22,7 @@ class _SelectedTheoryState extends State<SelectedTheory> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
