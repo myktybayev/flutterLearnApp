@@ -25,7 +25,15 @@ class AppRoutes {
             child: const CoursesScreen(),
           ),
         );
+      // case Theory.routeName:
+      //   return MaterialPageRoute(
+      //     builder: (context) => BlocProvider(
+      //       create: (_) => _di.get<CoursesCubit>(),
+      //       child: const CoursesScreen(),
+      //     ),
+      //   );
     }
+
     return null;
   }
 }
