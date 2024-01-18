@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/features/quiz/data/quiz.dart';
-import 'package:flutter_learn_app/features/quiz/ui/quiz_cubit.dart';
+import 'package:flutter_learn_app/features/quiz/ui/cubit/quiz_cubit.dart';
 
 class AnswerListWidget extends StatelessWidget {
   final Answer answer;

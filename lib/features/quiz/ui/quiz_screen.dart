@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/features/quiz/data/quiz.dart';
-import 'package:flutter_learn_app/features/quiz/ui/quiz_cubit.dart';
+import 'package:flutter_learn_app/features/quiz/ui/cubit/quiz_cubit.dart';
 import 'package:flutter_learn_app/features/quiz/ui/widgets/answer_list_widget.dart';
 import 'package:flutter_learn_app/features/quiz/ui/widgets/next_button.dart';
 import 'package:flutter_learn_app/features/quiz/ui/widgets/question_widget.dart';
