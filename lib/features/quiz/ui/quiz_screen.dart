@@ -5,6 +5,8 @@ import 'package:flutter_learn_app/features/quiz/ui/widgets/answer_list_widget.da
 import 'package:flutter_learn_app/features/quiz/ui/widgets/next_button.dart';
 import 'package:flutter_learn_app/features/quiz/ui/widgets/question_widget.dart';
 
+import 'cubit/quiz_cubit.dart';
+
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
   @override
