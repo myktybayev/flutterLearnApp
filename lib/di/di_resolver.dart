@@ -11,19 +11,16 @@ class DiResolver {
   static final _di = GetIt.instance;
 
   static Future<void> register() async {
-    _registerTheoryCubit();
     _registerNetworking();
     _registerServices();
     _registerRepositories();
     _registerCubits();
   }
 
-  static void _registerTheoryCubit() {
-    _di.registerFactory<TheoryCubit>(() => TheoryCubit());
-  }
-
   static void _registerCubits() {
+    // _di.registerFactory<CoursesCubit>(() => YourScreen());
     _di.registerFactory<CoursesCubit>(() => CoursesCubit());
+    _di.registerFactory<TheoryCubit>(() => TheoryCubit());
   }
 
   static void _registerNetworking() {

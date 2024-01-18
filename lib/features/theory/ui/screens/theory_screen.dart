@@ -41,8 +41,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
         child: Column(
           children: [
             TextField(
-              onChanged: (value) =>
-                  context.read<TheoryCubit>().runFilter(value),
+              onChanged: (value) => bloc.runFilter(value),
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -68,7 +67,6 @@ class _TheoryScreenState extends State<TheoryScreen> {
                   return ListView.builder(
                     itemCount: state.filteredTheoryList.length,
                     itemBuilder: (context, index) {
-                      final theory = state.filteredTheoryList[index];
                       return Column(
                         children: [
                           InkWell(
@@ -91,7 +89,6 @@ class _TheoryScreenState extends State<TheoryScreen> {
                                     ),
                                     leading: InkWell(
                                       onTap: () {
-                                        print("asdasdasda");
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
