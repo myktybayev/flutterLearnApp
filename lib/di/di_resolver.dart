@@ -18,14 +18,19 @@ class DiResolver {
   }
 
   static void _registerCubits() {
+<<<<<<< HEAD
     // _di.registerFactory<CoursesCubit>(() => YourScreen());
     _di.registerFactory<CoursesCubit>(() => CoursesCubit());
     _di.registerFactory<TheoryCubit>(() => TheoryCubit());
+=======
+    _di.registerFactory<CoursesCubit>(
+        () => CoursesCubit(_di.get<CoursesRepository>()));
+>>>>>>> main
   }
 
   static void _registerNetworking() {
     final options = BaseOptions(
-      baseUrl: 'http://api.pub.dev',
+      baseUrl: 'https://smavybe-production.up.railway.app',
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       sendTimeout: const Duration(seconds: 30),

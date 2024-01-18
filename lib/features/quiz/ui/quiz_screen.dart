@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/features/quiz/data/quiz.dart';
+<<<<<<< HEAD
 import 'package:flutter_learn_app/features/quiz/domain/widgets/answer_list_widget.dart';
 import 'package:flutter_learn_app/features/quiz/domain/widgets/next_button.dart';
 import 'package:flutter_learn_app/features/quiz/domain/widgets/question_widget.dart';
 import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
+=======
+import 'package:flutter_learn_app/features/quiz/ui/quiz_cubit.dart';
+import 'package:flutter_learn_app/features/quiz/ui/widgets/answer_list_widget.dart';
+import 'package:flutter_learn_app/features/quiz/ui/widgets/next_button.dart';
+import 'package:flutter_learn_app/features/quiz/ui/widgets/question_widget.dart';
+>>>>>>> main
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -12,13 +20,12 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  List<Question> questionList = getQuestions();
-  int currentQuestionIndex = 0;
-  int score = 0;
-  Answer? selectedAnswer;
-  bool isAnswerCorrect = false;
+  QuizCubit get bloc => context.read<QuizCubit>();
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<QuizCubit>().state;
+    final questionList = state.questionList;
+    var currentQuestionIndex = state.currentQuestionIndex;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -40,58 +47,14 @@ class _QuizScreenState extends State<QuizScreen> {
                   .answerList
                   .map((answer) => AnswerListWidget(
                       answer: answer,
-                      isSelected: answer == selectedAnswer,
+                      isSelected: answer == state.selectedAnswer,
                       onTap: (selectedAnswer) {
-                        setState(() {
-                          if (this.selectedAnswer == null) {
-                            this.selectedAnswer = selectedAnswer;
-                            if (selectedAnswer.isCorrect) {
-                              score++;
-                            }
-                          } else {
-                            if (this.selectedAnswer != selectedAnswer) {
-                              if (selectedAnswer.isCorrect) {
-                                score++;
-                              }
-                              this.selectedAnswer = selectedAnswer;
-                            } else {
-                              // Deselecting the answer
-                              this.selectedAnswer = null;
-                              if (selectedAnswer.isCorrect) {
-                                score--;
-                              }
-                            }
-                          }
-                        });
+                        bloc.onTapAnswer(selectedAnswer);
                       }))
                   .toList(),
             ),
             NextButtonWidget(
               isLastQuestion: currentQuestionIndex == questionList.length - 1,
-              onNextPressed: () {
-                setState(() {
-                  selectedAnswer = null;
-                  currentQuestionIndex++;
-                });
-              },
-              score: score,
-              totalQuestions: questionList.length,
-              onRestart: () {
-                Navigator.pop(context);
-                setState(() {
-                  currentQuestionIndex = 0;
-                  score = 0;
-                  selectedAnswer = null;
-                });
-              },
-              onBack: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TheoryScreen(),
-                  ),
-                );
-              },
             )
           ],
         ),

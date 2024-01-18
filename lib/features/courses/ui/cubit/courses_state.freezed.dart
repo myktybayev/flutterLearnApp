@@ -16,10 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CoursesState {
-  List<Course> get courses => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CoursesStateCopyWith<CoursesState> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Course> courses) loaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Course> courses)? loaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? loaded,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CoursesStateLoading value) loading,
+    required TResult Function(CoursesStateIdle value) loaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CoursesStateLoading value)? loading,
+    TResult? Function(CoursesStateIdle value)? loaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CoursesStateLoading value)? loading,
+    TResult Function(CoursesStateIdle value)? loaded,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -28,8 +61,6 @@ abstract class $CoursesStateCopyWith<$Res> {
   factory $CoursesStateCopyWith(
           CoursesState value, $Res Function(CoursesState) then) =
       _$CoursesStateCopyWithImpl<$Res, CoursesState>;
-  @useResult
-  $Res call({List<Course> courses});
 }
 
 /// @nodoc
@@ -41,38 +72,125 @@ class _$CoursesStateCopyWithImpl<$Res, $Val extends CoursesState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? courses = null,
-  }) {
-    return _then(_value.copyWith(
-      courses: null == courses
-          ? _value.courses
-          : courses // ignore: cast_nullable_to_non_nullable
-              as List<Course>,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_CoursesStateCopyWith<$Res>
-    implements $CoursesStateCopyWith<$Res> {
-  factory _$$_CoursesStateCopyWith(
-          _$_CoursesState value, $Res Function(_$_CoursesState) then) =
-      __$$_CoursesStateCopyWithImpl<$Res>;
+abstract class _$$CoursesStateLoadingCopyWith<$Res> {
+  factory _$$CoursesStateLoadingCopyWith(_$CoursesStateLoading value,
+          $Res Function(_$CoursesStateLoading) then) =
+      __$$CoursesStateLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CoursesStateLoadingCopyWithImpl<$Res>
+    extends _$CoursesStateCopyWithImpl<$Res, _$CoursesStateLoading>
+    implements _$$CoursesStateLoadingCopyWith<$Res> {
+  __$$CoursesStateLoadingCopyWithImpl(
+      _$CoursesStateLoading _value, $Res Function(_$CoursesStateLoading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CoursesStateLoading implements CoursesStateLoading {
+  const _$CoursesStateLoading();
+
   @override
+  String toString() {
+    return 'CoursesState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CoursesStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Course> courses) loaded,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Course> courses)? loaded,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CoursesStateLoading value) loading,
+    required TResult Function(CoursesStateIdle value) loaded,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CoursesStateLoading value)? loading,
+    TResult? Function(CoursesStateIdle value)? loaded,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CoursesStateLoading value)? loading,
+    TResult Function(CoursesStateIdle value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CoursesStateLoading implements CoursesState {
+  const factory CoursesStateLoading() = _$CoursesStateLoading;
+}
+
+/// @nodoc
+abstract class _$$CoursesStateIdleCopyWith<$Res> {
+  factory _$$CoursesStateIdleCopyWith(
+          _$CoursesStateIdle value, $Res Function(_$CoursesStateIdle) then) =
+      __$$CoursesStateIdleCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Course> courses});
 }
 
 /// @nodoc
-class __$$_CoursesStateCopyWithImpl<$Res>
-    extends _$CoursesStateCopyWithImpl<$Res, _$_CoursesState>
-    implements _$$_CoursesStateCopyWith<$Res> {
-  __$$_CoursesStateCopyWithImpl(
-      _$_CoursesState _value, $Res Function(_$_CoursesState) _then)
+class __$$CoursesStateIdleCopyWithImpl<$Res>
+    extends _$CoursesStateCopyWithImpl<$Res, _$CoursesStateIdle>
+    implements _$$CoursesStateIdleCopyWith<$Res> {
+  __$$CoursesStateIdleCopyWithImpl(
+      _$CoursesStateIdle _value, $Res Function(_$CoursesStateIdle) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +198,7 @@ class __$$_CoursesStateCopyWithImpl<$Res>
   $Res call({
     Object? courses = null,
   }) {
-    return _then(_$_CoursesState(
+    return _then(_$CoursesStateIdle(
       courses: null == courses
           ? _value._courses
           : courses // ignore: cast_nullable_to_non_nullable
@@ -91,8 +209,8 @@ class __$$_CoursesStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CoursesState implements _CoursesState {
-  const _$_CoursesState({required final List<Course> courses})
+class _$CoursesStateIdle implements CoursesStateIdle {
+  const _$CoursesStateIdle({required final List<Course> courses})
       : _courses = courses;
 
   final List<Course> _courses;
@@ -105,14 +223,14 @@ class _$_CoursesState implements _CoursesState {
 
   @override
   String toString() {
-    return 'CoursesState(courses: $courses)';
+    return 'CoursesState.loaded(courses: $courses)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CoursesState &&
+            other is _$CoursesStateIdle &&
             const DeepCollectionEquality().equals(other._courses, _courses));
   }
 
@@ -123,18 +241,78 @@ class _$_CoursesState implements _CoursesState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CoursesStateCopyWith<_$_CoursesState> get copyWith =>
-      __$$_CoursesStateCopyWithImpl<_$_CoursesState>(this, _$identity);
+  _$$CoursesStateIdleCopyWith<_$CoursesStateIdle> get copyWith =>
+      __$$CoursesStateIdleCopyWithImpl<_$CoursesStateIdle>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Course> courses) loaded,
+  }) {
+    return loaded(courses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Course> courses)? loaded,
+  }) {
+    return loaded?.call(courses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(courses);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CoursesStateLoading value) loading,
+    required TResult Function(CoursesStateIdle value) loaded,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CoursesStateLoading value)? loading,
+    TResult? Function(CoursesStateIdle value)? loaded,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CoursesStateLoading value)? loading,
+    TResult Function(CoursesStateIdle value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _CoursesState implements CoursesState {
-  const factory _CoursesState({required final List<Course> courses}) =
-      _$_CoursesState;
+abstract class CoursesStateIdle implements CoursesState {
+  const factory CoursesStateIdle({required final List<Course> courses}) =
+      _$CoursesStateIdle;
 
-  @override
   List<Course> get courses;
-  @override
   @JsonKey(ignore: true)
-  _$$_CoursesStateCopyWith<_$_CoursesState> get copyWith =>
+  _$$CoursesStateIdleCopyWith<_$CoursesStateIdle> get copyWith =>
       throw _privateConstructorUsedError;
 }
