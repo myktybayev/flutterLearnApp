@@ -4,7 +4,7 @@ part 'course_dto.g.dart';
 
 @JsonSerializable()
 class CourseDto {
-  @JsonValue('_id')
+  @JsonKey(name: '_id')
   final String id;
 
   final String title;

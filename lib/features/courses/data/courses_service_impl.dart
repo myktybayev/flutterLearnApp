@@ -11,17 +11,17 @@ class CoursesServiceImpl implements CoursesService {
   Future<List<CourseDto>> getCourses() async {
     try {
       final response = await dio.get(
-        '/assignment',
+        '/assignments',
         options: Options(
           headers: {
             'Authorization':
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJlbWFpbCI6InJhdWFuMDAxQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6IlJhdWFuMSIsInJvbGUiOiJhZG1pbiIsImxhc3ROYW1lIjoiUmF1YW4gTGFzdDEifSwiaWF0IjoxNzA0OTc1MTIzLCJleHAiOjE3MDQ5Nzg3MjN9.KRUDr4mXWzM2oNs1fygDF5QeDpPDN1wipdMU6NcugCo'
+                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJlbWFpbCI6InRlc3QwMDJAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoidGVzdDAwMiIsInJvbGUiOiJhZG1pbiIsImxhc3ROYW1lIjoidGVzdDAwMiJ9LCJpYXQiOjE3MDQ5Nzk1MjYsImV4cCI6MTcwNDk4MzEyNn0.SAQtE8Vlrf-yFadDFspgP3LRkx5HGtFs4-98BNyc_lg'
           },
         ),
       );
 
-      final jsonList = response.data as List;
-
+      final data = response.data as Map<String, dynamic>;
+      final jsonList = data['data'] as List;
       return jsonList.map((e) => CourseDto.fromJson(e)).toList();
     } on Object catch (_) {
       rethrow;

@@ -1,9 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learn_app/features/courses/data/courses_repository.dart';
 import 'package:flutter_learn_app/features/courses/domain/models/course.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_state.dart';
 
 class CoursesCubit extends Cubit<CoursesState> {
-  CoursesCubit() : super(const CoursesState.loading());
+  final CoursesRepository coursesRepository;
+
+  CoursesCubit(this.coursesRepository) : super(const CoursesState.loading());
 
   static const List<Course> courses = [
     Course(
@@ -45,12 +48,15 @@ class CoursesCubit extends Cubit<CoursesState> {
   ];
 
   void init() async {
-    final coursesList = await Future.delayed(
-      const Duration(seconds: 3),
-      () => courses,
-    );
+    print('cubit init');
 
-    emit(CoursesState.loaded(courses: coursesList));
+    try {
+      final coursesList = await coursesRepository.getAllCourses();
+      emit(CoursesState.loaded(courses: coursesList));
+    } catch (e) {
+      // Обработка ошибок
+      print(e);
+    }
   }
 
   void searchQuery(String query) {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/features/quiz/data/quiz.dart';
+import 'package:flutter_learn_app/features/quiz/ui/cubit/quiz_cubit.dart';
 
 class AnswerListWidget extends StatelessWidget {
   final Answer answer;
@@ -26,9 +28,8 @@ class AnswerListWidget extends StatelessWidget {
               isSelected ? Colors.orangeAccent : Colors.grey.shade500,
           shape: const StadiumBorder(),
         ),
-        onPressed: () {
-          onTap(answer); // Pass the selected answer to the onTap function
-        },
+        onPressed: () => context.read<QuizCubit>().onTapAnswer(answer),
+        // Pass the selected answer to the onTap function
         child: Text(answer.answerText),
       ),
     );
