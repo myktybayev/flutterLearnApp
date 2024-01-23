@@ -9,3 +9,25 @@ class AuthState with _$AuthState {
   const factory AuthState.loaded() = _Loaded;
   const factory AuthState.error(String message) = _Error;
 }
+
+// ================================================================================================================================
+
+class PasswordRecoveryState {
+  final String newPassword;
+  final String confirmPassword;
+
+  PasswordRecoveryState({
+    this.newPassword = '',
+    this.confirmPassword = '',
+  });
+
+  PasswordRecoveryState copyWith({
+    String? newPassword,
+    String? confirmPassword,
+  }) {
+    return PasswordRecoveryState(
+      newPassword: newPassword ?? this.newPassword,
+      confirmPassword: confirmPassword ?? this.confirmPassword,
+    );
+  }
+}

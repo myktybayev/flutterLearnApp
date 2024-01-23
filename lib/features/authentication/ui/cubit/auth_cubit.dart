@@ -23,3 +23,22 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 }
+
+// ================================================================================================================================
+
+class PasswordRecoveryCubit extends Cubit<PasswordRecoveryState> {
+  PasswordRecoveryCubit() : super(PasswordRecoveryState());
+
+  void updateNewPassword(String newPassword) {
+    emit(state.copyWith(newPassword: newPassword));
+  }
+
+  void updateConfirmPassword(String confirmPassword) {
+    emit(state.copyWith(confirmPassword: confirmPassword));
+  }
+
+  void changePassword() {
+    // Implement your logic for password change
+    // For example, you can call an API here
+  }
+}
