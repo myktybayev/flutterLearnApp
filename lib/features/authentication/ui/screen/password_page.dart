@@ -4,6 +4,7 @@ class PasswordRecoveryPage extends StatefulWidget {
   const PasswordRecoveryPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PasswordRecoveryPageState createState() => _PasswordRecoveryPageState();
 }
 
@@ -62,8 +63,8 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
             const SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
-                String newPassword = _newPasswordController.text;
-                String confirmPassword = _confirmPasswordController.text;
+                // String newPassword = _newPasswordController.text;
+                // String confirmPassword = _confirmPasswordController.text;
                 Navigator.pop(context);
               },
               style: ButtonStyle(

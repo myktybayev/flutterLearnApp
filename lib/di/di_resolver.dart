@@ -4,6 +4,7 @@ import 'package:flutter_learn_app/features/courses/data/courses_repository_impl.
 import 'package:flutter_learn_app/features/courses/data/courses_service.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_service_impl.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
+import 'package:flutter_learn_app/features/profile/ui/cubit/profile_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
 import 'package:get_it/get_it.dart';
 
@@ -21,6 +22,7 @@ class DiResolver {
     _di.registerFactory<CoursesCubit>(
         () => CoursesCubit(_di.get<CoursesRepository>()));
     _di.registerFactory<TheoryCubit>(() => TheoryCubit());
+    _di.registerFactory<ProfileCubit>(() => ProfileCubit());
   }
 
   static void _registerNetworking() {
