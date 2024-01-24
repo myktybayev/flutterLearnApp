@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/di/di_resolver.dart';
-import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
-import 'package:flutter_learn_app/features/profile/screen/profile_screen.dart';
+import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_cubit.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
+import 'package:flutter_learn_app/routing/app_routing.dart';
 import 'package:get_it/get_it.dart';
+
+import 'features/authentication/ui/auth/cubit/auth_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,12 +32,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MultiBlocProvider(providers: [
-        BlocProvider(create: (context) => _di.get<CoursesCubit>()),
-        BlocProvider(create: (context) => _di.get<AuthCubit>()),
-        BlocProvider(create: (context) => _di.get<TheoryCubit>()),
-        BlocProvider(create: (context) => _di.get<UiKitsCubit>()),
-      ], child: const MyHomePage()),
+      initialRoute: AppRouting.home,
+      onGenerateRoute: AppRouting.generateRoute,
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => _di.get<CoursesCubit>()),
+          BlocProvider(create: (context) => _di.get<AuthCubit>()),
+          BlocProvider(create: (context) => _di.get<TheoryCubit>()),
+        ],
+        child: const MyHomePage(),
+      ),
     );
   }
 }

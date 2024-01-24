@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/profile/screen/profile_screen.dart';
+import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
 
-class ProfileSettings extends StatelessWidget {
-  const ProfileSettings({super.key});
-
+class ProfileSettingsScreen extends StatelessWidget {
+  static const routeName = 'profile_settings';
+  const ProfileSettingsScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +31,7 @@ class ProfileSettings extends StatelessWidget {
             ),
             iconSize: 20,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfileScreen()),
-              );
+              Navigator.pushNamed(context, ProfileScreen.routeName);
             },
           ),
         ),
@@ -51,16 +48,16 @@ class ProfileSettings extends StatelessWidget {
                 height: 50,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color.fromRGBO(235, 235, 235, 1),
+                    color: const Color.fromRGBO(235, 235, 235, 1),
                     width: 1,
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 15),
                       child: Text(
                         'Язык',
@@ -75,10 +72,10 @@ class ProfileSettings extends StatelessWidget {
                       padding: EdgeInsets.only(
                         right: 15,
                       ),
-                      child: Container(
+                      child: SizedBox(
                         width: 14,
                         height: 7,
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_forward,
                           color: Colors.black,
                           size: 20,
@@ -94,16 +91,16 @@ class ProfileSettings extends StatelessWidget {
                 height: 50,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color.fromRGBO(235, 235, 235, 1),
+                    color: const Color.fromRGBO(235, 235, 235, 1),
                     width: 1,
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 15),
                       child: Text(
                         'Тема',
@@ -118,10 +115,10 @@ class ProfileSettings extends StatelessWidget {
                       padding: EdgeInsets.only(
                         right: 15,
                       ),
-                      child: Container(
+                      child: SizedBox(
                         width: 14,
                         height: 7,
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_forward,
                           color: Colors.black,
                           size: 20,
@@ -137,16 +134,16 @@ class ProfileSettings extends StatelessWidget {
                 height: 50,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color.fromRGBO(235, 235, 235, 1),
+                    color: const Color.fromRGBO(235, 235, 235, 1),
                     width: 1,
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 15),
                       child: Text(
                         'Безопасность',
@@ -161,10 +158,10 @@ class ProfileSettings extends StatelessWidget {
                       padding: EdgeInsets.only(
                         right: 15,
                       ),
-                      child: Container(
+                      child: SizedBox(
                         width: 14,
                         height: 7,
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_forward,
                           color: Colors.black,
                           size: 20,
