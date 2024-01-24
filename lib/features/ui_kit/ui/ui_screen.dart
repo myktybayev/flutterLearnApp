@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/theory/data/ui_kits_topic.dart';
-import 'package:flutter_learn_app/features/theory/ui/selected_ui_kits.dart';
+import 'package:flutter_learn_app/features/ui_kit/data/ui_kits_topic.dart';
+import 'package:flutter_learn_app/features/ui_kit/ui/selected_ui_kits.dart';
 
 class UIScreen extends StatefulWidget {
   const UIScreen({super.key});
