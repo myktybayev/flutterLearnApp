@@ -9,3 +9,5 @@ class AuthState with _$AuthState {
   const factory AuthState.loaded() = _Loaded;
   const factory AuthState.error(String message) = _Error;
 }
+
+// ================================================ ================================================================================
