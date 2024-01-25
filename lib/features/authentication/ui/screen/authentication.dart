@@ -5,9 +5,11 @@ import 'package:flutter_learn_app/features/authentication/ui/screen/password_pag
 import 'package:url_launcher/url_launcher.dart';
 
 class AuthenticationPage extends StatefulWidget {
+  static const routeName = 'authentication';
   const AuthenticationPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AuthenticationPageState createState() => _AuthenticationPageState();
 }
 
