@@ -30,10 +30,7 @@ class ProfileSettings extends StatelessWidget {
             ),
             iconSize: 20,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ProfileScreen()),
-              );
+              Navigator.pushNamed(context, ProfileScreen.routeName);
             },
           ),
         ),

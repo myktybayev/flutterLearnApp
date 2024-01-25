@@ -10,6 +10,7 @@ import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
+import 'package:flutter_learn_app/routing/app_routing.dart';
 import 'package:get_it/get_it.dart';
 
 Future<void> main() async {
@@ -30,12 +31,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MultiBlocProvider(providers: [
-        BlocProvider(create: (context) => _di.get<CoursesCubit>()),
-        BlocProvider(create: (context) => _di.get<AuthCubit>()),
-        BlocProvider(create: (context) => _di.get<TheoryCubit>()),
-        BlocProvider(create: (context) => _di.get<ProfileCubit>()),
-      ], child: const MyHomePage()),
+      initialRoute: AppRouting.home,
+      onGenerateRoute: AppRouting.generateRoute,
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => _di.get<CoursesCubit>()),
+          BlocProvider(create: (context) => _di.get<AuthCubit>()),
+          BlocProvider(create: (context) => _di.get<TheoryCubit>()),
+          BlocProvider(create: (context) => _di.get<ProfileCubit>()),
+        ],
+        child: const MyHomePage(),
+      ),
     );
   }
 }

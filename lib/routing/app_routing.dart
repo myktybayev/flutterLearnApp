@@ -1,10 +1,14 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
+import 'package:flutter_learn_app/features/profile/ui/cubit/profile_cubit.dart';
+import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
 import 'package:get_it/get_it.dart';
 
-class AppRoutes {
+class AppRouting {
   static const home = '/home';
   static const signIn = '/sign_in';
   static const login = '/login';
@@ -24,14 +28,16 @@ class AppRoutes {
             create: (_) => _di.get<CoursesCubit>(),
             child: const CoursesScreen(),
           ),
+          settings: settings,
         );
-      // case Theory.routeName:
-      //   return MaterialPageRoute(
-      //     builder: (context) => BlocProvider(
-      //       create: (_) => _di.get<CoursesCubit>(),
-      //       child: const CoursesScreen(),
-      //     ),
-      //   );
+      case ProfileScreen.routeName:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (_) => _di.get<ProfileCubit>(),
+            child: const ProfileScreen(),
+          ),
+          settings: settings,
+        );
     }
 
     return null;

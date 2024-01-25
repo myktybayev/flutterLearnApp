@@ -4,6 +4,7 @@ import 'package:flutter_learn_app/features/profile/ui/cubit/profile_cubit.dart';
 import 'profile_settings.dart';
 
 class ProfileScreen extends StatefulWidget {
+  static const routeName = 'profile';
   const ProfileScreen({super.key});
 
   @override

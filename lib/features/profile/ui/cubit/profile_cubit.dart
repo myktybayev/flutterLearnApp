@@ -5,8 +5,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(const ProfileState());
 
   void saveData(String name, String phoneNumber) {
-    emit(state.copyWith(name: name, isEdited: true));
-    emit(state.copyWith(phoneNumber: phoneNumber, isEdited: true));
+    emit(state.copyWith(name: name, phoneNumber: phoneNumber, isEdited: true));
   }
 
   void restartEdit() {

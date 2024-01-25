@@ -63,8 +63,6 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
             const SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
-                // String newPassword = _newPasswordController.text;
-                // String confirmPassword = _confirmPasswordController.text;
                 Navigator.pop(context);
               },
               style: ButtonStyle(
