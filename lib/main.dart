@@ -4,7 +4,6 @@ import 'package:flutter_learn_app/di/di_resolver.dart';
 import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
-import 'package:flutter_learn_app/features/profile/ui/cubit/profile_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
