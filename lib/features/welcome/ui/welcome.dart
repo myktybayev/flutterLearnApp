@@ -15,10 +15,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Welcome Welcome Welcome "),
+            const Text("Welcome Welcome Welcome "),
             ElevatedButton(
               onPressed: () {},
-              child: Text("Welcome"),
+              child: const Text("Welcome"),
             )
           ],
         ),
