@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/di/di_resolver.dart';
+import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
+import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
+import 'package:flutter_learn_app/features/profile/ui/cubit/profile_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
+import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
 import 'package:flutter_learn_app/routing/app_routing.dart';
+import 'package:get_it/get_it.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,15 +23,24 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static final _di = GetIt.instance;
+
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: AppRouting.home,
       onGenerateRoute: AppRouting.generateRoute,
-      home: MyHomePage(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => _di.get<CoursesCubit>()),
+          BlocProvider(create: (context) => _di.get<AuthCubit>()),
+          BlocProvider(create: (context) => _di.get<TheoryCubit>()),
+        ],
+        child: const MyHomePage(),
+      ),
     );
   }
 }
