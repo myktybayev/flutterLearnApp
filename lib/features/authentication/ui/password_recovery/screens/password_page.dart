@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
 
 class PasswordRecoveryPage extends StatefulWidget {
   const PasswordRecoveryPage({super.key});
@@ -13,13 +11,6 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
   final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
-
-  late PasswordRecoveryCubit _cubit;
-  @override
-  void initState() {
-    super.initState();
-    _cubit = context.read<PasswordRecoveryCubit>();
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
-import 'package:flutter_learn_app/features/authentication/ui/screen/password_page.dart';
+import 'package:flutter_learn_app/features/authentication/ui/auth/cubit/auth_cubit.dart';
+import 'package:flutter_learn_app/features/authentication/ui/password_recovery/screens/password_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AuthenticationPage extends StatefulWidget {
