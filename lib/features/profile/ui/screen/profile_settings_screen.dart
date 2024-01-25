@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
 
-class ProfileSettings extends StatelessWidget {
-  const ProfileSettings({super.key});
+class ProfileSettingsScreen extends StatelessWidget {
+  static const routeName = 'profile_settings';
+  const ProfileSettingsScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

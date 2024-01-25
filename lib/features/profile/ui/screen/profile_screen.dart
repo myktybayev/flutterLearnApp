@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/features/profile/ui/cubit/profile_cubit.dart';
-import 'profile_settings.dart';
+import 'package:flutter_learn_app/features/profile/ui/cubit/profile/profile_cubit.dart';
+import 'profile_settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = 'profile';
@@ -69,12 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 iconSize: 20,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProfileSettings(),
-                    ),
-                  );
+                  Navigator.pushNamed(context, ProfileSettingsScreen.routeName);
                 },
               ),
             ),

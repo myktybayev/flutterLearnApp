@@ -1,11 +1,11 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
-import 'package:flutter_learn_app/features/profile/ui/cubit/profile_cubit.dart';
+import 'package:flutter_learn_app/features/profile/ui/cubit/profile/profile_cubit.dart';
+import 'package:flutter_learn_app/features/profile/ui/cubit/profile_settings/profile_settings_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
+import 'package:flutter_learn_app/features/profile/ui/screen/profile_settings_screen.dart';
 import 'package:get_it/get_it.dart';
 
 class AppRouting {
@@ -35,6 +35,14 @@ class AppRouting {
           builder: (context) => BlocProvider(
             create: (_) => _di.get<ProfileCubit>(),
             child: const ProfileScreen(),
+          ),
+          settings: settings,
+        );
+      case ProfileSettingsScreen.routeName:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (_) => _di.get<ProfileSettingsCubit>(),
+            child: const ProfileSettingsScreen(),
           ),
           settings: settings,
         );
