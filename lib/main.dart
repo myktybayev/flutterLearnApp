@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/di/di_resolver.dart';
-import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
@@ -11,6 +10,8 @@ import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
 import 'package:flutter_learn_app/routing/app_routing.dart';
 import 'package:get_it/get_it.dart';
+
+import 'features/authentication/ui/auth/cubit/auth_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
