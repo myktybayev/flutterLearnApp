@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
+import 'package:flutter_learn_app/features/authentication/ui/auth/cubit/auth_cubit.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_repository.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_repository_impl.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_service.dart';
