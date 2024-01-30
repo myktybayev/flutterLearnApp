@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learn_app/features/authentication/ui/cubit/auth_cubit.dart';
-import 'package:flutter_learn_app/features/authentication/ui/screen/authentication.dart';
+import 'package:flutter_learn_app/features/authentication/ui/auth/cubit/auth_cubit.dart';
+import 'package:flutter_learn_app/features/authentication/ui/auth/screen/authentication.dart';
 import 'package:flutter_learn_app/features/courses/ui/courses_screen.dart';
 import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/cubit/profile/profile_cubit.dart';
