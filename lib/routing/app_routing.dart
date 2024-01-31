@@ -10,7 +10,7 @@ class AppRoutes {
   static const login = '/login';
   static const settings = '/settings';
   static const profile = '/profile';
-  static const theory = '/theory';
+  static const theory = '/theory.dart';
   static const uiKits = '/uiKits';
 
   static final _di = GetIt.instance;

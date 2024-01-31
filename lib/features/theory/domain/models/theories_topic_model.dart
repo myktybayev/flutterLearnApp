@@ -23,15 +23,3 @@ class TheoryList {
     };
   }
 }
-
-/*
-Theory_Quiz
-
-t1_quiz1
-t1_quiz2
-t1_quiz3
-
-t2_quiz1
-t2_quiz2
-
- */
