@@ -20,6 +20,10 @@ class CoursesServiceImpl implements CoursesService {
         ),
       );
 
+      if (response.data == null) {
+        return [];
+      }
+
       final data = response.data as Map<String, dynamic>;
       final jsonList = data['data'] as List;
       return jsonList.map((e) => CourseDto.fromJson(e)).toList();
