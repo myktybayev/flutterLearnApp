@@ -3,22 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_cubit.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_state.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/selected_ui_kits.dart';
-import 'package:get_it/get_it.dart';
 
-class UIScreen extends StatelessWidget {
+class UIScreen extends StatefulWidget {
   const UIScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => GetIt.I<UiKitsCubit>()..loadUiKits(),
-      child: _UIScreenBody(),
-    );
-  }
+  State<UIScreen> createState() => _UIScreenBody();
 }
 
-class _UIScreenBody extends StatelessWidget {
+class _UIScreenBody extends State<UIScreen> {
   @override
+  void initState() {
+    bloc.loadUiKits();
+    super.initState();
+  }
+
+  UiKitsCubit get bloc => context.read<UiKitsCubit>();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -35,8 +35,7 @@ class _UIScreenBody extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              onChanged: (value) =>
-                  context.read<UiKitsCubit>().filterUiKits(value),
+              onChanged: (value) => (value) => bloc.filterUiKits(value),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0)),
@@ -59,7 +58,8 @@ class _UIScreenBody extends StatelessWidget {
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => SelectedUIKit(uiKit: uiKit)),
+                              builder: (_) => SelectedUIKit(uiKit: uiKit),
+                            ),
                           ),
                           child: ListTile(
                             title: Text(uiKit.uiKitTopic),

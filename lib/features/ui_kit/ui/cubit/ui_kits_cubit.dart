@@ -4,11 +4,9 @@ import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_state.dart';
 
 class UiKitsCubit extends Cubit<UiKitsState> {
   UiKitsCubit() : super(const UiKitsState.initial());
-
   void loadUiKits() {
     emit(const UiKitsState.loading());
     try {
-      // Загрузка данных
       emit(UiKitsState.loaded(uiKitList));
     } catch (e) {
       emit(UiKitsState.error(e.toString()));

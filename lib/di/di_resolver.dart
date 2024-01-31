@@ -10,7 +10,6 @@ import 'package:get_it/get_it.dart';
 
 class DiResolver {
   static final _di = GetIt.instance;
-
   static Future<void> register() async {
     _registerNetworking();
     _registerServices();
