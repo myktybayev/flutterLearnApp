@@ -10,11 +10,15 @@ import 'theory_repository_test.mocks.dart';
 
 @GenerateMocks([AssetBundle])
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   late MockAssetBundle mockRootBundle;
-  TheoryRepository repository;
+  late TheoryRepository repository;
+
   setUp(() {
     mockRootBundle = MockAssetBundle();
-    repository = TheoryRepositoryImpl();
+
+    repository = TheoryRepositoryImpl(bundle: mockRootBundle);
   });
 
   group('TheoryRepositoryImpl', () {
@@ -22,9 +26,7 @@ void main() {
         () async {
       when(mockRootBundle.loadString('json/theories_topic.json')).thenAnswer(
           (_) async =>
-              '[{"id": "1", "title": "Theory 1", "description": "Description 1"}]');
-
-      var repository = TheoryRepositoryImpl();
+              '{"items":[{"id": "1", "title": "Theory 1", "description": "Description 1"}]}');
 
       var result = await repository.fetchTheories();
 
@@ -33,11 +35,9 @@ void main() {
       expect(result.first.title, 'Theory 1');
     });
 
-    test('fetchTheories throws an exception when data fetch fails', () async {
+    test('fetchTheories throws an exception when data fetch fails', () {
       when(mockRootBundle.loadString('json/theories_topic.json'))
           .thenThrow(Exception('Failed to load theories'));
-
-      var repository = TheoryRepositoryImpl();
 
       expect(repository.fetchTheories(), throwsException);
     });

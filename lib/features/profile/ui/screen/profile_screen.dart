@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'profile_settings.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learn_app/features/profile/ui/cubit/profile/profile_cubit.dart';
+import 'profile_settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
+  static const routeName = 'profile';
   const ProfileScreen({super.key});
 
   @override
@@ -9,19 +12,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  ProfileCubit get bloc => context.read<ProfileCubit>();
+
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   FocusNode nameFocusNode = FocusNode();
   FocusNode phoneFocusNode = FocusNode();
-  bool isEdited = false;
-
-  void saveData() {
-    setState(() {
-      isEdited = true;
-    });
-    print('Имя: ${nameController.text}');
-    print('Номер телефона: ${phoneController.text}');
-  }
 
   @override
   void dispose() {
@@ -34,10 +30,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final profileState = context.watch<ProfileCubit>().state;
+    nameController.text = profileState.name ?? '';
+    phoneController.text = profileState.phoneNumber ?? '';
+
     TextStyle textFieldStyle = TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w500,
-      color: isEdited
+      color: profileState.isEdited
           ? const Color.fromRGBO(0, 0, 0, 1)
           : const Color.fromRGBO(0, 0, 0, 0.5),
     );
@@ -69,10 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 iconSize: 20,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfileSettings()),
-                  );
+                  Navigator.pushNamed(context, ProfileSettingsScreen.routeName);
                 },
               ),
             ),
@@ -204,7 +201,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: 350,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: saveData,
+                      onPressed: () => bloc.saveData(
+                          nameController.text, phoneController.text),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromRGBO(75, 63, 187, 1),
                         shape: RoundedRectangleBorder(
