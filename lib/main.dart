@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _pages = [
     const CoursesScreen(),
-    TheoryScreen(),
+    const TheoryScreen(),
     const SavedScreen(),
     const ProfileScreen(),
     const UIScreen(),

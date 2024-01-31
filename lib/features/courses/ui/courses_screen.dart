@@ -72,7 +72,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomeScreens(
+                              builder: (context) => const HomeScreens(
                                   // course: filteredCourses[index],
                                   ),
                             ),
@@ -97,6 +97,7 @@ class CourseItem extends StatelessWidget {
   final VoidCallback onCoursePressed;
 
   const CourseItem({
+    super.key,
     required this.course,
     required this.onSavePressed,
     required this.onCoursePressed,
@@ -144,7 +145,9 @@ class CourseItem extends StatelessWidget {
                     right: 8.0,
                     child: IconButton(
                       icon: const Icon(Icons.favorite_border),
-                      color: course.isSaved ? Color(0xFF4B3FBB) : Colors.white,
+                      color: course.isSaved
+                          ? const Color(0xFF4B3FBB)
+                          : Colors.white,
                       onPressed: onSavePressed,
                     ),
                   ),

@@ -8,6 +8,7 @@ class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AuthenticationPageState createState() => _AuthenticationPageState();
 }
 
@@ -278,7 +279,9 @@ class _AuthenticationPageState extends State<AuthenticationPage>
   }
 
   void _launchPDF(String pdfUrl) async {
+    // ignore: deprecated_member_use
     if (await canLaunch(pdfUrl)) {
+      // ignore: deprecated_member_use
       await launch(pdfUrl);
     } else {
       throw 'Не удалось открыть PDF';

@@ -48,6 +48,7 @@ class CoursesCubit extends Cubit<CoursesState> {
   ];
 
   void init() async {
+    // ignore: avoid_print
     print('cubit init');
 
     try {
@@ -55,6 +56,7 @@ class CoursesCubit extends Cubit<CoursesState> {
       emit(CoursesState.loaded(courses: coursesList));
     } catch (e) {
       // Обработка ошибок
+      // ignore: avoid_print
       print(e);
     }
   }

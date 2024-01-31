@@ -19,7 +19,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       isEdited = true;
     });
+    // ignore: avoid_print
     print('Имя: ${nameController.text}');
+    // ignore: avoid_print
     print('Номер телефона: ${phoneController.text}');
   }
 
@@ -71,7 +73,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ProfileSettings()),
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileSettings()),
                   );
                 },
               ),

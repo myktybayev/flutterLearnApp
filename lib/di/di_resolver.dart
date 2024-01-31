@@ -35,6 +35,7 @@ class DiResolver {
     _di.registerLazySingleton<Dio>(() => dio);
   }
 
+  // ignore: unused_element
   static void _registerGoogleNetwork() {
     final options = BaseOptions(
       baseUrl: 'http://api.google.com',

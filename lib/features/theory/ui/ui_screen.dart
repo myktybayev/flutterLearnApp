@@ -14,7 +14,6 @@ class _UIScreen extends State<UIScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _uiKit = uiKitList;
     super.initState();
   }
@@ -41,7 +40,7 @@ class _UIScreen extends State<UIScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text(
+        title: const Text(
           "UI kits",
           style: TextStyle(
               fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
@@ -57,7 +56,7 @@ class _UIScreen extends State<UIScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+        padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
         child: Column(
           children: [
             TextField(

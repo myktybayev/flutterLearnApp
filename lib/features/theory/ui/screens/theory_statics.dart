@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class StaticsScreen extends StatefulWidget {
-  StaticsScreen({super.key});
+  const StaticsScreen({super.key});
 
   @override
   State<StaticsScreen> createState() => _StaticsScreenState();
@@ -14,9 +14,9 @@ class _StaticsScreenState extends State<StaticsScreen> {
   @override
   void initState() {
     super.initState();
-    Hive.openBox("theory_box").then((_box) {
+    Hive.openBox("theory_box").then((box) {
       setState(() {
-        _theoryBox = _box;
+        _theoryBox = box;
       });
     });
   }

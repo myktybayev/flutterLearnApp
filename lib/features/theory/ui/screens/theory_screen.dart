@@ -7,7 +7,7 @@ import 'package:flutter_learn_app/features/theory/ui/screens/theory_statics.dart
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TheoryScreen extends StatefulWidget {
-  TheoryScreen({super.key});
+  const TheoryScreen({super.key});
 
   @override
   State<TheoryScreen> createState() => _TheoryScreenState();
@@ -93,7 +93,7 @@ class _TheoryScreenState extends State<TheoryScreen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    StaticsScreen()));
+                                                    const StaticsScreen()));
                                       },
                                       child: CircularPercentIndicator(
                                         circularStrokeCap:

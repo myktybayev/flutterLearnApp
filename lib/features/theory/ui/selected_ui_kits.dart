@@ -8,7 +8,7 @@ import 'screens/only_indicator.dart';
 class SelectedUIKit extends StatefulWidget {
   final UIKitList uiKit;
 
-  SelectedUIKit({Key? key, required this.uiKit}) : super(key: key);
+  const SelectedUIKit({Key? key, required this.uiKit}) : super(key: key);
 
   @override
   State<SelectedUIKit> createState() => _SelectedUIKitState();
@@ -111,14 +111,15 @@ class _SelectedUIKitState extends State<SelectedUIKit> {
             child: Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple,
+                  backgroundColor: Colors.deepPurple,
                   elevation: 0,
                 ),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CustomScrollViewExampleApp()),
+                        builder: (context) =>
+                            const CustomScrollViewExampleApp()),
                   );
                 },
                 child: const Text(
