@@ -6,7 +6,6 @@ import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:flutter_learn_app/features/profile/screen/profile_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
-import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
 import 'package:get_it/get_it.dart';
 
@@ -52,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     TheoryScreen(),
     const SavedScreen(),
     const ProfileScreen(),
-    const UIScreen(),
+    const ProfileScreen(),
   ];
   List<String> pageNames = [
     "Курсы",
