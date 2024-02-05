@@ -19,6 +19,7 @@ void main() {
     coursesCubit = CoursesCubit(coursesRepository);
   });
 
+// **** Searching test ****
   blocTest(
     'emits [CoursesState.loaded] and pushes filtered courses list when called searchQuery()',
     build: () {
@@ -34,7 +35,7 @@ void main() {
     },
     act: (coursesCubit) async {
       coursesCubit.init();
-      coursesCubit.searchQuery('Основы программирования(Python)');
+      coursesCubit.searchQuery('Python');
     },
     expect: () => [
       const CoursesState.loaded(
@@ -47,6 +48,53 @@ void main() {
           ),
         ],
       ),
+    ],
+  );
+
+// **** When searchQuery returns [] ****
+
+  blocTest<CoursesCubit, CoursesState>(
+    'emits [CoursesState.loaded] with an empty list when getAllCourses()',
+    build: () {
+      when(coursesRepository.getAllCourses()).thenAnswer((_) async => []);
+      return coursesCubit;
+    },
+    act: (coursesCubit) => coursesCubit.init(),
+    expect: () => [
+      const CoursesState.loaded(
+        courses: [],
+      ),
+    ],
+  );
+
+// **** Exception Test ****
+  blocTest<CoursesCubit, CoursesState>(
+    'emits [CoursesState.error] when getAllCourses[] throws exception',
+    build: () {
+      when(coursesRepository.getAllCourses())
+          .thenThrow(Exception('Failed to load courses'));
+      return coursesCubit;
+    },
+    act: (coursesCubit) => coursesCubit.init(),
+    expect: () => [
+      const CoursesState.loading(),
+      const CoursesState.error(message: 'Failed to load courses')
+    ],
+  );
+
+// **** Init test ****
+
+  blocTest<CoursesCubit, CoursesState>(
+    'emits [CoursesState.loading, CoursesState.loaded]',
+    build: () {
+      when(coursesRepository.getAllCourses())
+          .thenAnswer((_) async => [/* список курсов */]);
+      return coursesCubit;
+    },
+    act: (cubit) => cubit.init(),
+    expect: () => [
+      isA<CoursesStateLoading>(),
+      isA<CoursesStateIdle>(),
     ],
   );
   tearDown(() {
