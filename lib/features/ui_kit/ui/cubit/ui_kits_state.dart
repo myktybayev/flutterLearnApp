@@ -5,8 +5,9 @@ part 'ui_kits_state.freezed.dart';
 
 @freezed
 class UiKitsState with _$UiKitsState {
-  const factory UiKitsState.initial() = _Initial;
-  const factory UiKitsState.loading() = _Loading;
-  const factory UiKitsState.loaded(List<UIKitList> uiKits) = _Loaded;
-  const factory UiKitsState.error(String message) = _Error;
+  const factory UiKitsState.initial() = UIKitsInitial;
+  const factory UiKitsState.loading() = UIKitsLoading;
+  const factory UiKitsState.loaded({required List<UIKitList> uiKits}) =
+      UIKitsLoaded;
+  const factory UiKitsState.error(String message) = UIKitsError;
 }

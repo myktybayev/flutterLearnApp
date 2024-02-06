@@ -7,7 +7,7 @@ class UiKitsCubit extends Cubit<UiKitsState> {
   void loadUiKits() {
     emit(const UiKitsState.loading());
     try {
-      emit(UiKitsState.loaded(uiKitList));
+      emit(UiKitsState.loaded(uiKits: uiKitList));
     } catch (e) {
       emit(UiKitsState.error(e.toString()));
     }
@@ -15,12 +15,14 @@ class UiKitsCubit extends Cubit<UiKitsState> {
 
   void filterUiKits(String keyword) {
     if (keyword.isEmpty) {
-      emit(UiKitsState.loaded(uiKitList));
+      emit(UiKitsState.loaded(uiKits: uiKitList));
     } else {
-      emit(UiKitsState.loaded(uiKitList
-          .where((uiKit) =>
-              uiKit.uiKitTopic.toLowerCase().contains(keyword.toLowerCase()))
-          .toList()));
+      emit(UiKitsState.loaded(
+          uiKits: uiKitList
+              .where((uiKit) => uiKit.uiKitTopic
+                  .toLowerCase()
+                  .contains(keyword.toLowerCase()))
+              .toList()));
     }
   }
 }

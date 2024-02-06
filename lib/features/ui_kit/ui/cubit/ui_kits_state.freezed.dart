@@ -43,26 +43,26 @@ mixin _$UiKitsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(UIKitsInitial value) initial,
+    required TResult Function(UIKitsLoading value) loading,
+    required TResult Function(UIKitsLoaded value) loaded,
+    required TResult Function(UIKitsError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(UIKitsInitial value)? initial,
+    TResult? Function(UIKitsLoading value)? loading,
+    TResult? Function(UIKitsLoaded value)? loaded,
+    TResult? Function(UIKitsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(UIKitsInitial value)? initial,
+    TResult Function(UIKitsLoading value)? loading,
+    TResult Function(UIKitsLoaded value)? loaded,
+    TResult Function(UIKitsError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,24 +87,25 @@ class _$UiKitsStateCopyWithImpl<$Res, $Val extends UiKitsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$UIKitsInitialCopyWith<$Res> {
+  factory _$$UIKitsInitialCopyWith(
+          _$UIKitsInitial value, $Res Function(_$UIKitsInitial) then) =
+      __$$UIKitsInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$UiKitsStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$UIKitsInitialCopyWithImpl<$Res>
+    extends _$UiKitsStateCopyWithImpl<$Res, _$UIKitsInitial>
+    implements _$$UIKitsInitialCopyWith<$Res> {
+  __$$UIKitsInitialCopyWithImpl(
+      _$UIKitsInitial _value, $Res Function(_$UIKitsInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$UIKitsInitial implements UIKitsInitial {
+  const _$UIKitsInitial();
 
   @override
   String toString() {
@@ -114,7 +115,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$UIKitsInitial);
   }
 
   @override
@@ -160,10 +161,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(UIKitsInitial value) initial,
+    required TResult Function(UIKitsLoading value) loading,
+    required TResult Function(UIKitsLoaded value) loaded,
+    required TResult Function(UIKitsError value) error,
   }) {
     return initial(this);
   }
@@ -171,10 +172,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(UIKitsInitial value)? initial,
+    TResult? Function(UIKitsLoading value)? loading,
+    TResult? Function(UIKitsLoaded value)? loaded,
+    TResult? Function(UIKitsError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -182,10 +183,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(UIKitsInitial value)? initial,
+    TResult Function(UIKitsLoading value)? loading,
+    TResult Function(UIKitsLoaded value)? loaded,
+    TResult Function(UIKitsError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -195,29 +196,30 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements UiKitsState {
-  const factory _Initial() = _$_Initial;
+abstract class UIKitsInitial implements UiKitsState {
+  const factory UIKitsInitial() = _$UIKitsInitial;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$UIKitsLoadingCopyWith<$Res> {
+  factory _$$UIKitsLoadingCopyWith(
+          _$UIKitsLoading value, $Res Function(_$UIKitsLoading) then) =
+      __$$UIKitsLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$UiKitsStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$UIKitsLoadingCopyWithImpl<$Res>
+    extends _$UiKitsStateCopyWithImpl<$Res, _$UIKitsLoading>
+    implements _$$UIKitsLoadingCopyWith<$Res> {
+  __$$UIKitsLoadingCopyWithImpl(
+      _$UIKitsLoading _value, $Res Function(_$UIKitsLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$UIKitsLoading implements UIKitsLoading {
+  const _$UIKitsLoading();
 
   @override
   String toString() {
@@ -227,7 +229,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$UIKitsLoading);
   }
 
   @override
@@ -273,10 +275,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(UIKitsInitial value) initial,
+    required TResult Function(UIKitsLoading value) loading,
+    required TResult Function(UIKitsLoaded value) loaded,
+    required TResult Function(UIKitsError value) error,
   }) {
     return loading(this);
   }
@@ -284,10 +286,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(UIKitsInitial value)? initial,
+    TResult? Function(UIKitsLoading value)? loading,
+    TResult? Function(UIKitsLoaded value)? loaded,
+    TResult? Function(UIKitsError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -295,10 +297,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(UIKitsInitial value)? initial,
+    TResult Function(UIKitsLoading value)? loading,
+    TResult Function(UIKitsLoaded value)? loaded,
+    TResult Function(UIKitsError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -308,23 +310,25 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements UiKitsState {
-  const factory _Loading() = _$_Loading;
+abstract class UIKitsLoading implements UiKitsState {
+  const factory UIKitsLoading() = _$UIKitsLoading;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$UIKitsLoadedCopyWith<$Res> {
+  factory _$$UIKitsLoadedCopyWith(
+          _$UIKitsLoaded value, $Res Function(_$UIKitsLoaded) then) =
+      __$$UIKitsLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<UIKitList> uiKits});
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$UiKitsStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$UIKitsLoadedCopyWithImpl<$Res>
+    extends _$UiKitsStateCopyWithImpl<$Res, _$UIKitsLoaded>
+    implements _$$UIKitsLoadedCopyWith<$Res> {
+  __$$UIKitsLoadedCopyWithImpl(
+      _$UIKitsLoaded _value, $Res Function(_$UIKitsLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -332,8 +336,8 @@ class __$$_LoadedCopyWithImpl<$Res>
   $Res call({
     Object? uiKits = null,
   }) {
-    return _then(_$_Loaded(
-      null == uiKits
+    return _then(_$UIKitsLoaded(
+      uiKits: null == uiKits
           ? _value._uiKits
           : uiKits // ignore: cast_nullable_to_non_nullable
               as List<UIKitList>,
@@ -343,8 +347,9 @@ class __$$_LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<UIKitList> uiKits) : _uiKits = uiKits;
+class _$UIKitsLoaded implements UIKitsLoaded {
+  const _$UIKitsLoaded({required final List<UIKitList> uiKits})
+      : _uiKits = uiKits;
 
   final List<UIKitList> _uiKits;
   @override
@@ -363,7 +368,7 @@ class _$_Loaded implements _Loaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
+            other is _$UIKitsLoaded &&
             const DeepCollectionEquality().equals(other._uiKits, _uiKits));
   }
 
@@ -374,8 +379,8 @@ class _$_Loaded implements _Loaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  _$$UIKitsLoadedCopyWith<_$UIKitsLoaded> get copyWith =>
+      __$$UIKitsLoadedCopyWithImpl<_$UIKitsLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -417,10 +422,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(UIKitsInitial value) initial,
+    required TResult Function(UIKitsLoading value) loading,
+    required TResult Function(UIKitsLoaded value) loaded,
+    required TResult Function(UIKitsError value) error,
   }) {
     return loaded(this);
   }
@@ -428,10 +433,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(UIKitsInitial value)? initial,
+    TResult? Function(UIKitsLoading value)? loading,
+    TResult? Function(UIKitsLoaded value)? loaded,
+    TResult? Function(UIKitsError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -439,10 +444,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(UIKitsInitial value)? initial,
+    TResult Function(UIKitsLoading value)? loading,
+    TResult Function(UIKitsLoaded value)? loaded,
+    TResult Function(UIKitsError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -452,28 +457,31 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements UiKitsState {
-  const factory _Loaded(final List<UIKitList> uiKits) = _$_Loaded;
+abstract class UIKitsLoaded implements UiKitsState {
+  const factory UIKitsLoaded({required final List<UIKitList> uiKits}) =
+      _$UIKitsLoaded;
 
   List<UIKitList> get uiKits;
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+  _$$UIKitsLoadedCopyWith<_$UIKitsLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$UIKitsErrorCopyWith<$Res> {
+  factory _$$UIKitsErrorCopyWith(
+          _$UIKitsError value, $Res Function(_$UIKitsError) then) =
+      __$$UIKitsErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$UiKitsStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$UIKitsErrorCopyWithImpl<$Res>
+    extends _$UiKitsStateCopyWithImpl<$Res, _$UIKitsError>
+    implements _$$UIKitsErrorCopyWith<$Res> {
+  __$$UIKitsErrorCopyWithImpl(
+      _$UIKitsError _value, $Res Function(_$UIKitsError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -481,7 +489,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$UIKitsError(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -492,8 +500,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.message);
+class _$UIKitsError implements UIKitsError {
+  const _$UIKitsError(this.message);
 
   @override
   final String message;
@@ -507,7 +515,7 @@ class _$_Error implements _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$UIKitsError &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -517,8 +525,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$UIKitsErrorCopyWith<_$UIKitsError> get copyWith =>
+      __$$UIKitsErrorCopyWithImpl<_$UIKitsError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -560,10 +568,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(UIKitsInitial value) initial,
+    required TResult Function(UIKitsLoading value) loading,
+    required TResult Function(UIKitsLoaded value) loaded,
+    required TResult Function(UIKitsError value) error,
   }) {
     return error(this);
   }
@@ -571,10 +579,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(UIKitsInitial value)? initial,
+    TResult? Function(UIKitsLoading value)? loading,
+    TResult? Function(UIKitsLoaded value)? loaded,
+    TResult? Function(UIKitsError value)? error,
   }) {
     return error?.call(this);
   }
@@ -582,10 +590,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(UIKitsInitial value)? initial,
+    TResult Function(UIKitsLoading value)? loading,
+    TResult Function(UIKitsLoaded value)? loaded,
+    TResult Function(UIKitsError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -595,11 +603,11 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements UiKitsState {
-  const factory _Error(final String message) = _$_Error;
+abstract class UIKitsError implements UiKitsState {
+  const factory UIKitsError(final String message) = _$UIKitsError;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$UIKitsErrorCopyWith<_$UIKitsError> get copyWith =>
       throw _privateConstructorUsedError;
 }
