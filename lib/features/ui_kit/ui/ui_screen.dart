@@ -55,11 +55,11 @@ class _UIScreenBody extends State<UIScreen> {
                       itemBuilder: (context, index) {
                         final uiKit = state.uiKits[index];
                         return InkWell(
-                          onTap: () => Navigator.push(
+                          onTap: () => Navigator.pushNamed(
                             context,
                             MaterialPageRoute(
                               builder: (_) => SelectedUIKit(uiKit: uiKit),
-                            ),
+                            ) as String,
                           ),
                           child: ListTile(
                             title: Text(uiKit.uiKitTopic),
