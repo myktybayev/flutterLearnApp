@@ -20,18 +20,21 @@ mixin _$CoursesState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<Course> courses) loaded,
+    required TResult Function(String? message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<Course> courses)? loaded,
+    TResult? Function(String? message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<Course> courses)? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$CoursesState {
   TResult map<TResult extends Object?>({
     required TResult Function(CoursesStateLoading value) loading,
     required TResult Function(CoursesStateIdle value) loaded,
+    required TResult Function(CoursesStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CoursesStateLoading value)? loading,
     TResult? Function(CoursesStateIdle value)? loaded,
+    TResult? Function(CoursesStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CoursesStateLoading value)? loading,
     TResult Function(CoursesStateIdle value)? loaded,
+    TResult Function(CoursesStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$CoursesStateLoading implements CoursesStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<Course> courses) loaded,
+    required TResult Function(String? message) error,
   }) {
     return loading();
   }
@@ -123,6 +130,7 @@ class _$CoursesStateLoading implements CoursesStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<Course> courses)? loaded,
+    TResult? Function(String? message)? error,
   }) {
     return loading?.call();
   }
@@ -132,6 +140,7 @@ class _$CoursesStateLoading implements CoursesStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<Course> courses)? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -145,6 +154,7 @@ class _$CoursesStateLoading implements CoursesStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(CoursesStateLoading value) loading,
     required TResult Function(CoursesStateIdle value) loaded,
+    required TResult Function(CoursesStateError value) error,
   }) {
     return loading(this);
   }
@@ -154,6 +164,7 @@ class _$CoursesStateLoading implements CoursesStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CoursesStateLoading value)? loading,
     TResult? Function(CoursesStateIdle value)? loaded,
+    TResult? Function(CoursesStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -163,6 +174,7 @@ class _$CoursesStateLoading implements CoursesStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CoursesStateLoading value)? loading,
     TResult Function(CoursesStateIdle value)? loaded,
+    TResult Function(CoursesStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -249,6 +261,7 @@ class _$CoursesStateIdle implements CoursesStateIdle {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<Course> courses) loaded,
+    required TResult Function(String? message) error,
   }) {
     return loaded(courses);
   }
@@ -258,6 +271,7 @@ class _$CoursesStateIdle implements CoursesStateIdle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<Course> courses)? loaded,
+    TResult? Function(String? message)? error,
   }) {
     return loaded?.call(courses);
   }
@@ -267,6 +281,7 @@ class _$CoursesStateIdle implements CoursesStateIdle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<Course> courses)? loaded,
+    TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -280,6 +295,7 @@ class _$CoursesStateIdle implements CoursesStateIdle {
   TResult map<TResult extends Object?>({
     required TResult Function(CoursesStateLoading value) loading,
     required TResult Function(CoursesStateIdle value) loaded,
+    required TResult Function(CoursesStateError value) error,
   }) {
     return loaded(this);
   }
@@ -289,6 +305,7 @@ class _$CoursesStateIdle implements CoursesStateIdle {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CoursesStateLoading value)? loading,
     TResult? Function(CoursesStateIdle value)? loaded,
+    TResult? Function(CoursesStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -298,6 +315,7 @@ class _$CoursesStateIdle implements CoursesStateIdle {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CoursesStateLoading value)? loading,
     TResult Function(CoursesStateIdle value)? loaded,
+    TResult Function(CoursesStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -314,5 +332,145 @@ abstract class CoursesStateIdle implements CoursesState {
   List<Course> get courses;
   @JsonKey(ignore: true)
   _$$CoursesStateIdleCopyWith<_$CoursesStateIdle> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CoursesStateErrorCopyWith<$Res> {
+  factory _$$CoursesStateErrorCopyWith(
+          _$CoursesStateError value, $Res Function(_$CoursesStateError) then) =
+      __$$CoursesStateErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$CoursesStateErrorCopyWithImpl<$Res>
+    extends _$CoursesStateCopyWithImpl<$Res, _$CoursesStateError>
+    implements _$$CoursesStateErrorCopyWith<$Res> {
+  __$$CoursesStateErrorCopyWithImpl(
+      _$CoursesStateError _value, $Res Function(_$CoursesStateError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$CoursesStateError(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CoursesStateError implements CoursesStateError {
+  const _$CoursesStateError({this.message});
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'CoursesState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CoursesStateError &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CoursesStateErrorCopyWith<_$CoursesStateError> get copyWith =>
+      __$$CoursesStateErrorCopyWithImpl<_$CoursesStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Course> courses) loaded,
+    required TResult Function(String? message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Course> courses)? loaded,
+    TResult? Function(String? message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? loaded,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CoursesStateLoading value) loading,
+    required TResult Function(CoursesStateIdle value) loaded,
+    required TResult Function(CoursesStateError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CoursesStateLoading value)? loading,
+    TResult? Function(CoursesStateIdle value)? loaded,
+    TResult? Function(CoursesStateError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CoursesStateLoading value)? loading,
+    TResult Function(CoursesStateIdle value)? loaded,
+    TResult Function(CoursesStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CoursesStateError implements CoursesState {
+  const factory CoursesStateError({final String? message}) =
+      _$CoursesStateError;
+
+  String? get message;
+  @JsonKey(ignore: true)
+  _$$CoursesStateErrorCopyWith<_$CoursesStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

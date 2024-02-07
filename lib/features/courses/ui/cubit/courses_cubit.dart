@@ -48,14 +48,15 @@ class CoursesCubit extends Cubit<CoursesState> {
   ];
 
   void init() async {
-    print('cubit init');
-
+    // print('cubit init');
+    emit(const CoursesState.loading());
     try {
       final coursesList = await coursesRepository.getAllCourses();
       emit(CoursesState.loaded(courses: coursesList));
     } catch (e) {
+      emit(const CoursesState.error(message: 'Failed to load courses'));
       // Обработка ошибок
-      print(e);
+      // print(e);
     }
   }
 

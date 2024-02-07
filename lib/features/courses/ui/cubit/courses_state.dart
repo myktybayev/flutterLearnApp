@@ -10,4 +10,6 @@ class CoursesState with _$CoursesState {
   const factory CoursesState.loaded({
     required List<Course> courses,
   }) = CoursesStateIdle;
+
+  const factory CoursesState.error({String? message}) = CoursesStateError;
 }
