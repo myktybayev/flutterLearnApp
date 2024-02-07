@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => _di.get<CoursesCubit>()),
           BlocProvider(create: (context) => _di.get<AuthCubit>()),
           BlocProvider(create: (context) => _di.get<TheoryCubit>()),
+          BlocProvider(create: (context) => _di.get<UiKitsCubit>()),
         ],
         child: const MyHomePage(),
       ),

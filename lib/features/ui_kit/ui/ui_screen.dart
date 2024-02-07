@@ -3,22 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_cubit.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_state.dart';
 import 'package:flutter_learn_app/features/ui_kit/ui/selected_ui_kits.dart';
+import 'package:get_it/get_it.dart';
 
-class UIScreen extends StatefulWidget {
+class UIScreen extends StatelessWidget {
   const UIScreen({super.key});
 
   @override
-  State<UIScreen> createState() => _UIScreenBody();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => GetIt.I<UiKitsCubit>()..loadUiKits(),
+      child: _UIScreenBody(),
+    );
+  }
 }
 
-class _UIScreenBody extends State<UIScreen> {
+class _UIScreenBody extends StatelessWidget {
   @override
-  void initState() {
-    bloc.loadUiKits();
-    super.initState();
-  }
-
-  UiKitsCubit get bloc => context.read<UiKitsCubit>();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -31,11 +31,12 @@ class _UIScreenBody extends State<UIScreen> {
         leading: const BackButton(color: Colors.white),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: EdgeInsets.only(top: 15, left: 15, right: 15),
         child: Column(
           children: [
             TextField(
-              onChanged: (value) => (value) => bloc.filterUiKits(value),
+              onChanged: (value) =>
+                  context.read<UiKitsCubit>().filterUiKits(value),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0)),
@@ -55,11 +56,10 @@ class _UIScreenBody extends State<UIScreen> {
                       itemBuilder: (context, index) {
                         final uiKit = state.uiKits[index];
                         return InkWell(
-                          onTap: () => Navigator.pushNamed(
+                          onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => SelectedUIKit(uiKit: uiKit),
-                            ) as String,
+                                builder: (_) => SelectedUIKit(uiKit: uiKit)),
                           ),
                           child: ListTile(
                             title: Text(uiKit.uiKitTopic),

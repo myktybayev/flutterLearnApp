@@ -24,10 +24,9 @@ class DiResolver {
     _di.registerFactory<CoursesCubit>(
         () => CoursesCubit(_di.get<CoursesRepository>()));
     _di.registerFactory<TheoryCubit>(() => TheoryCubit());
-    _di.registerFactory<UiKitsCubit>(() => UiKitsCubit());
-    _di.registerFactory<ProfileCubit>(() => ProfileCubit());
     _di.registerFactory<ProfileSettingsCubit>(() => ProfileSettingsCubit());
     _di.registerFactory<AuthCubit>(() => AuthCubit());
+    _di.registerFactory<UiKitsCubit>(() => UiKitsCubit());
   }
 
   static void _registerNetworking() {

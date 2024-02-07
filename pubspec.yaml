@@ -21,7 +21,6 @@ dependencies:
   youtube_player_flutter: ^8.1.2
   percent_indicator: ^4.2.3
   hive_flutter:
-  mockito: ^5.4.4
   hive:
   dio: ^5.4.0
   path_provider:
