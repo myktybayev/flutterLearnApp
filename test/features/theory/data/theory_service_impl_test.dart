@@ -18,25 +18,27 @@ void main() {
   });
 
   test(
-      'getTheories returns a list of TheoryDTO when repository fetches successfully',
-      () async {
-    when(mockTheoryRepository.fetchTheories())
-        .thenAnswer((_) async => <TheoryDTO>[
-              TheoryDTO(
-                  id: '1', title: 'Theory 1', description: 'Description 1'),
-            ]);
+    'getTheories returns a list of TheoryDTO when repository fetches successfully',
+    () async {
+      when(mockTheoryRepository.fetchTheories())
+          .thenAnswer((_) async => <TheoryDTO>[
+                TheoryDTO(
+                    id: '1', title: 'Theory 1', description: 'Description 1'),
+              ]);
 
-    final result = await theoryService.getTheories();
+      final result = await theoryService.getTheories();
 
-    expect(result, isA<List<TheoryDTO>>());
-    expect(result.length, 1);
-    expect(result.first.title, equals('Theory 1'));
-  });
+      expect(result, isA<List<TheoryDTO>>());
+      expect(result.length, 1);
+      expect(result.first.title, equals('Theory 1'));
+    },
+  );
 
-  test('getTheories forwards exceptions from repository', () {
+  test('getTheories forwards exceptions from repository', () async {
     when(mockTheoryRepository.fetchTheories())
         .thenThrow(Exception('Failed to fetch theories'));
 
-    expect(theoryService.getTheories(), throwsException);
+    // Use expectLater with async matchers to handle the Future result properly
+    await expectLater(theoryService.getTheories(), throwsA(isException));
   });
 }

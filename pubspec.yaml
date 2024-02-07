@@ -33,8 +33,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  bloc_test: ^9.1.5
   hive_generator:
   build_runner: '2.4.6'
+  mockito: ^5.4.4
   flutter_lints: ^2.0.0
   freezed: '2.4.1'
 

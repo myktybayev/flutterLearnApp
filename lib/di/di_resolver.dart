@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_repository.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_repository_impl.dart';
 import 'package:flutter_learn_app/features/courses/data/courses_service.dart';
@@ -20,7 +21,8 @@ class DiResolver {
   static void _registerCubits() {
     _di.registerFactory<CoursesCubit>(
         () => CoursesCubit(_di.get<CoursesRepository>()));
-    _di.registerFactory<TheoryCubit>(() => TheoryCubit());
+    _di.registerFactory<TheoryCubit>(
+        () => TheoryCubit(assetBundle: rootBundle));
   }
 
   static void _registerNetworking() {
