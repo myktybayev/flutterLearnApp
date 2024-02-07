@@ -8,11 +8,11 @@ import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/cubit/profile/profile_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/cubit/profile_settings/profile_settings_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
+import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 class DiResolver {
   static final _di = GetIt.instance;
-
   static Future<void> register() async {
     _registerNetworking();
     _registerServices();
@@ -24,9 +24,9 @@ class DiResolver {
     _di.registerFactory<CoursesCubit>(
         () => CoursesCubit(_di.get<CoursesRepository>()));
     _di.registerFactory<TheoryCubit>(() => TheoryCubit());
-    _di.registerFactory<ProfileCubit>(() => ProfileCubit());
     _di.registerFactory<ProfileSettingsCubit>(() => ProfileSettingsCubit());
     _di.registerFactory<AuthCubit>(() => AuthCubit());
+    _di.registerFactory<UiKitsCubit>(() => UiKitsCubit());
   }
 
   static void _registerNetworking() {

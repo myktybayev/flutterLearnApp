@@ -6,7 +6,8 @@ import 'package:flutter_learn_app/features/courses/ui/cubit/courses_cubit.dart';
 import 'package:flutter_learn_app/features/profile/ui/screen/profile_screen.dart';
 import 'package:flutter_learn_app/features/theory/ui/cubit/theory_cubit.dart';
 import 'package:flutter_learn_app/features/theory/ui/screens/theory_screen.dart';
-import 'package:flutter_learn_app/features/theory/ui/ui_screen.dart';
+import 'package:flutter_learn_app/features/ui_kit/ui/cubit/ui_kits_cubit.dart';
+import 'package:flutter_learn_app/features/ui_kit/ui/ui_screen.dart';
 import 'package:flutter_learn_app/features/video/ui/saved_screen.dart';
 import 'package:flutter_learn_app/routing/app_routing.dart';
 import 'package:get_it/get_it.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => _di.get<CoursesCubit>()),
           BlocProvider(create: (context) => _di.get<AuthCubit>()),
           BlocProvider(create: (context) => _di.get<TheoryCubit>()),
+          BlocProvider(create: (context) => _di.get<UiKitsCubit>()),
         ],
         child: const MyHomePage(),
       ),

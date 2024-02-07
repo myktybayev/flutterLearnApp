@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_app/features/theory/data/ui_kit_topic.dart';
-import 'package:flutter_learn_app/features/theory/data/ui_kits_topic.dart';
-import 'package:flutter_learn_app/features/theory/ui/ui_kits_example/custom_scroll_view.dart';
-
-import 'screens/only_indicator.dart';
+import 'package:flutter_learn_app/features/theory/ui/screens/only_indicator.dart';
+import 'package:flutter_learn_app/features/ui_kit/data/ui_kit_topic.dart';
+import 'package:flutter_learn_app/features/ui_kit/data/ui_kits_topic.dart';
+import 'package:flutter_learn_app/features/ui_kit/ui/ui_kits_example/custom_scroll_view.dart';
 
 class SelectedUIKit extends StatefulWidget {
   final UIKitList uiKit;
 
-  SelectedUIKit({Key? key, required this.uiKit}) : super(key: key);
+  const SelectedUIKit({Key? key, required this.uiKit}) : super(key: key);
 
   @override
   State<SelectedUIKit> createState() => _SelectedUIKitState();
