@@ -4,9 +4,9 @@ import 'package:flutter_learn_app/features/quiz/ui/cubit/quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
   QuizCubit() : super(const QuizState(questionList: [])) {
-    _initializeQuiz();
+    initializeQuiz();
   }
-  Future<void> _initializeQuiz() async {
+  Future<void> initializeQuiz() async {
     List<Question> questions = getQuestions();
     emit(QuizState(questionList: questions));
   }
